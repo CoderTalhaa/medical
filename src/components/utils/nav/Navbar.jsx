@@ -32,7 +32,7 @@ export default function Navbar() {
       initial={{ padding: "1rem" }}
       animate={{ padding: scrolled ? "0.5rem" : "1rem" }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0  w-full z-50 transition-all duration-300 ${
         scrolled
           ? "backdrop-blur-sm bg-transparent border-white/45 border-b-[1px]"
           : ""

@@ -21,6 +21,7 @@
     "glslify": "^7.1.1",
     "glslify-loader": "^2.0.0",
     "gsap": "^3.12.5",
+    "howler": "^2.2.4",
     "lenis": "^1.1.6",
     "leva": "^0.9.35",
     "lucide-react": "^0.482.0",

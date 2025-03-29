@@ -1,4 +1,4 @@
-import { Inter, Playfair_Display, Manrope } from "next/font/google";
+import { Inter, Playfair_Display, Manrope, Bungee } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/utils/nav/Navbar";
 import Cursor from "@/components/utils/Cursor";
@@ -21,6 +21,12 @@ const manrope = Manrope({
   variable: "--font-manrope",
 });
 
+const bungee = Bungee({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-bungee",
+});
+
 export const metadata = {
   title: "Medical",
   description:
@@ -34,7 +40,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/T.svg" />
       </head>
       <body
-        className={`${fairplay.variable} ${inter.variable} ${manrope.variable} antialiased text-text2 bg-bg2`}
+        className={`${fairplay.variable} ${inter.variable} ${manrope.variable} ${bungee.variable} antialiased text-text2 bg-bg2`}
       >
         {/* <Cursor /> */}
         <Navbar />

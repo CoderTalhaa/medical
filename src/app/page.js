@@ -1,20 +1,17 @@
 "use client";
 import Scene from "@/components/three/Scene";
+import Ovarlay from "@/components/ui/Ovarlay";
 import LoadingScreen from "@/components/utils/loadingScreen/LoadingScreen";
 import useModelStore from "@/store/useStore";
 import { AnimatePresence, motion } from "framer-motion";
+import gsap from "gsap";
 import Lenis from "lenis";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
+import useAudio from "@/hooks/useAudio";
 
 export default function Home() {
-  const {
-    isLoading,
-    setIsLoading,
-    content,
-    spread,
-    setSpread,
-    setCameraPosition,
-  } = useModelStore();
+  const { isLoading, setIsLoading, currentModel } = useModelStore();
+  const { toggleMute, isMuted } = useAudio();
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -46,92 +43,89 @@ export default function Home() {
     };
   }, [isLoading]);
 
-  const contentVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.3, ease: "easeOut" },
+  const containerVariants = {
+    initial: {
+      opacity: 0,
     },
-    exit: { opacity: 0, x: -20, transition: { duration: 0.2, ease: "easeIn" } },
+    animate: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1, // Control stagger timing here
+        delayChildren: 0.2, // Optional: delay before starting animations
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        staggerChildren: 0.05,
+        staggerDirection: -1, // Animate in reverse order when exiting
+        when: "afterChildren", // Wait for children to finish before parent exits
+      },
+    },
   };
 
-  const resetCamera = () => {
-    setCameraPosition([3, 1.5, 4], [0, 0.5, 0]);
+  const letterVariants = {
+    initial: {
+      opacity: 0,
+      y: 50,
+    },
+    animate: {
+      opacity: 0.1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+    exit: {
+      opacity: 0,
+      y: -50,
+      transition: {
+        duration: 0.4,
+        ease: "easeIn",
+      },
+    },
   };
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && currentModel?.bg) {
+      gsap.to(document.body, {
+        backgroundColor: currentModel.bg,
+        duration: 1,
+        ease: "power2.out",
+      });
+    }
+  }, [currentModel]);
 
   return (
     <>
       {isLoading && <LoadingScreen setIsLoading={setIsLoading} />}
       <Scene />
+      <button className="absolute bottom-52 right-5 z-10" onClick={toggleMute}>
+        {isMuted ? "Unmute" : "Mute"}
+      </button>
 
-      <h1 className="~text-4xl/7xl absolute top-32 left-10 font-headings">
-        Brain
-      </h1>
+      <div className="noise w-full h-full absolute inset-0 -z-[2]"></div>
 
       <AnimatePresence mode="wait">
-        {content && (
-          <motion.div
-            key={content.heading}
-            variants={contentVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="absolute top-[40%] left-5 bg-slate-100 text-text2 p-6 rounded-lg flex flex-col z-50 gap-2"
-          >
-            <h2 className="~text-2xl/5xl font-headings">{content.heading}</h2>
-            <p className="~text-base/2xl font-text pl-1 max-w-[400px]">
-              {content.text}
-            </p>
-          </motion.div>
-        )}
+        <motion.div
+          key={currentModel.name}
+          className="text-[25rem] absolute -z-[1] inset-0 h-full w-full flex items-center justify-center font-headings font-bold uppercase"
+          variants={containerVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          style={{ color: currentModel.color }}
+        >
+          {currentModel.name.split("").map((char, index) => (
+            <motion.span key={index} variants={letterVariants}>
+              {char}
+            </motion.span>
+          ))}
+        </motion.div>
       </AnimatePresence>
 
-      {/* Controls on Right */}
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        style={{
-          position: "absolute",
-          top: "50%",
-          right: 20,
-          transform: "translateY(-50%)",
-          display: "flex",
-          flexDirection: "column",
-          gap: "15px",
-          zIndex: 1000,
-        }}
-      >
-        <input
-          type="range"
-          min="0"
-          max="1"
-          step="0.01"
-          value={spread}
-          onChange={(e) => setSpread(parseFloat(e.target.value))}
-          style={{
-            writingMode: "vertical-rl", // Vertical slider
-            height: "150px",
-            cursor: "pointer",
-          }}
-        />
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={resetCamera}
-          style={{
-            padding: "10px 20px",
-            background: "rgba(255, 255, 255, 0.1)",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
-        >
-          Reset Camera
-        </motion.button>
-      </motion.div>
+      <Ovarlay />
     </>
   );
 }

@@ -23,13 +23,14 @@ module.exports = {
       headings: "var(--font-fairplay)",
       text: "var(--font-inter)",
       manrope: "var(--font-manrope)",
+      bungee: "var(--font-bungee)",
     },
     extend: {
       colors: {
         text: "#01062e",
         secondary: "#C8E373",
         bg: "#f7f4e8",
-        bg2: "#CBDFE0",
+        bg2: "#FFE0E0",
         text2: "#025169",
       },
       backgroundImage: {

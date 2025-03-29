@@ -46,9 +46,9 @@ export function Brain({ ...props }) {
         geometry={geometry}
         material={brainMaterial}
         position={offset.to((s) => [
-          originalPosition[0] + originalPosition[0] * s * 1.5,
-          originalPosition[1] + originalPosition[1] * s * 0.5,
-          originalPosition[2] + originalPosition[2] * s * 1.5,
+          originalPosition[0] + originalPosition[0] * s * 2,
+          originalPosition[1] + originalPosition[1] * s,
+          originalPosition[2] + originalPosition[2] * s * 2,
         ])}
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}

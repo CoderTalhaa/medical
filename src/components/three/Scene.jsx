@@ -9,7 +9,9 @@ export default function Scene() {
   const [eventSource, setEventSource] = useState(null);
 
   useEffect(() => {
-    setEventSource(window);
+    if (typeof window !== "undefined" && typeof document !== "undefined") {
+      setEventSource(document.body);
+    }
   }, []);
 
   return (
@@ -20,8 +22,8 @@ export default function Scene() {
         dpr={[1, 1.5]}
         gl={{ antialias: false }}
         camera={{ position: [3, 1.5, 4], fov: 60 }}
+        eventSource={eventSource}
         className="canvas"
-        // eventSource={eventSource}
       >
         <Suspense fallback={null}>
           <Exp />
