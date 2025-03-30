@@ -4,6 +4,7 @@ import {
   Grid,
   KeyboardControls,
   Loader,
+  OrbitControls,
   PointerLockControls,
   Stars,
 } from "@react-three/drei";
@@ -53,7 +54,7 @@ export default function Scene() {
           />
           <color attach="background" args={["#000"]} />
           {/* <fog attach="fog" args={["#202030", 10, 45]} /> */}
-          <hemisphereLight intensity={0.2} color="#eaeaea" groundColor="blue" />
+
           <Suspense fallback={null}>
             <Physics>
               <Exp />
@@ -64,7 +65,7 @@ export default function Scene() {
 
           {/* <Grid infiniteGrid={true} /> */}
           <ambientLight intensity={0.5} />
-          <Environment preset="city" />
+          <Environment preset="warehouse" />
           <PointerLockControls />
         </Canvas>
       </KeyboardControls>

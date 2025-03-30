@@ -7,15 +7,25 @@ import { Lung } from "./model/Lung";
 export default function Exp() {
   return (
     <>
-      <Brain position={[0, 0.7, -5]} scale={2.5} />
-      <Heart position={[5, 0.5, -20]} scale={1.5} />
-      <Lung position={[20, 1, -25]} scale={2.5} />
-      <Blood
-        position={[30, 1, -15]}
-        scale={2.5}
-        rotation={[0, Math.PI / -1.5, 0]}
-      />
-      <Female position={[33, 1, 10]} scale={2.5} />
+      <group position={[10, 1, 0]} scale={1.7}>
+        <Brain />
+      </group>
+      <group position={[3.09, 0, 9.51]} scale={1.4}>
+        <Heart />
+      </group>
+      <group position={[-8.09, 0.5, 5.88]} scale={1}>
+        <Lung />
+      </group>
+      <group position={[-8.09, 1, -5.88]} scale={1.5}>
+        <Female />
+      </group>
+      <group
+        position={[3.09, 0, -25]}
+        rotation={[0, Math.PI / 1.7, 0]}
+        scale={1}
+      >
+        <Blood />
+      </group>
     </>
   );
 }

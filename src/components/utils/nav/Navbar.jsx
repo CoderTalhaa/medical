@@ -38,8 +38,10 @@ export default function Navbar() {
           : ""
       }`}
     >
-      <nav className="hidden md:flex items-center justify-between p-6">
-        <h1 className="font-headings ~text-xl/4xl">Medical</h1>
+      <nav className="hidden md:flex items-center justify-between p-4">
+        <div className="w-22 h-22 object-cover">
+          <Image src="/img/technical.png" width={100} height={100} alt="logo" />
+        </div>
         <div className="flex items-center gap-8">
           <ul className="flex gap-8 font-manrope font-semibold tracking-wide ">
             <NavLink href="/">Home</NavLink>

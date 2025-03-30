@@ -43,7 +43,7 @@ export default function RootLayout({ children }) {
         className={`${fairplay.variable} ${inter.variable} ${manrope.variable} ${bungee.variable} antialiased text-text2 bg-black`}
       >
         {/* <Cursor /> */}
-        {/* <Navbar /> */}
+        <Navbar />
         {children}
       </body>
     </html>

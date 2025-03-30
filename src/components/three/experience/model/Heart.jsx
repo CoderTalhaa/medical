@@ -1,91 +1,85 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useGLTF, useAnimations, Outlines } from "@react-three/drei";
-import useModelStore from "@/store/useStore";
-import * as THREE from "three";
-import { heartData } from "@/data/heartData";
+import React, { useEffect, useRef } from "react";
+import { useGLTF, useAnimations } from "@react-three/drei";
 
 export function Heart(props) {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF("/models/heart3.glb");
-  const { actions, mixer } = useAnimations(animations || [], group);
-  const { setContent, spread, setCameraPosition } = useModelStore();
+  const { nodes, materials, animations } = useGLTF(
+    "/models/AnimHeart_optimized.glb"
+  );
+  const { actions } = useAnimations(animations, group);
 
-  const heartRef = useRef();
-  const [hovered, setHovered] = useState(false);
-
-  // Animation setup
   useEffect(() => {
-    console.log("Animations:", animations);
-    if (actions && animations?.length > 0) {
-      const action = actions[animations[0].name];
-      if (action) {
-        action.reset().fadeIn(0.5).play();
-        action.setLoop(THREE.LoopRepeat, Infinity);
-        console.log("Playing animation:", animations[0].name);
-      }
-    } else {
-      console.log("No animations found in heart3.glb");
+    if (actions) {
+      Object.values(actions).forEach((action) => action.play()); // Play all animations
     }
-    // Cleanup
-    return () => {
-      if (actions && animations?.length > 0) {
-        actions[animations[0].name]?.fadeOut(0.5);
-      }
-    };
-  }, [actions, animations]);
-
-  // Manual spread effect using mixer update
-  // useEffect(() => {
-  //   if (mixer) {
-  //     const handleFrame = () => {
-  //       mixer.update(0.016); // Update mixer at ~60fps
-  //       if (heartRef.current) {
-  //         const s = spread;
-  //         heartRef.current.position.set(
-  //           0.039 + 0.039 * s * 2, // x spread
-  //           1.033 + 1.033 * s, // y spread
-  //           -0.143 + -0.143 * s * 2 // z spread
-  //         );
-  //       }
-  //     };
-  //     const interval = setInterval(handleFrame, 16);
-  //     return () => clearInterval(interval);
-  //   }
-  // }, [mixer, spread]);
-
-  const handleClick = () => {
-    setContent(heartData["heart"]);
-
-    const box = new THREE.Box3().setFromObject(heartRef.current);
-    const center = new THREE.Vector3();
-    box.getCenter(center);
-
-    const position = [center.x + 1, center.y + 1, center.z + 2];
-    const target = [center.x, center.y, center.z];
-    setCameraPosition(position, target);
-  };
+  }, [actions]);
 
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
         <mesh
-          ref={heartRef}
-          name="heart"
+          name="1"
           castShadow
           receiveShadow
-          geometry={nodes.heart.geometry}
-          material={materials.heart}
-          morphTargetDictionary={nodes.heart.morphTargetDictionary}
-          morphTargetInfluences={nodes.heart.morphTargetInfluences}
-          position={[0.039, 1.033, -0.143]}
-          // onPointerOver={() => setHovered(true)}
-          // onPointerOut={() => setHovered(false)}
-          // onClick={handleClick}
-          // material-color={hovered ? "#D81B60" : "white"}
-        ></mesh>
+          geometry={nodes["1"].geometry}
+          material={materials["Ventricle.001"]}
+          morphTargetDictionary={nodes["1"].morphTargetDictionary}
+          morphTargetInfluences={nodes["1"].morphTargetInfluences}
+          position={[-0.021, 1.205, 0.115]}
+        />
+        <mesh
+          name="2"
+          castShadow
+          receiveShadow
+          geometry={nodes["2"].geometry}
+          material={materials["left_atrium.001"]}
+          morphTargetDictionary={nodes["2"].morphTargetDictionary}
+          morphTargetInfluences={nodes["2"].morphTargetInfluences}
+          position={[-0.072, 1.611, -0.36]}
+        />
+        <mesh
+          name="3"
+          castShadow
+          receiveShadow
+          geometry={nodes["3"].geometry}
+          material={materials["right_atrium.001"]}
+          morphTargetDictionary={nodes["3"].morphTargetDictionary}
+          morphTargetInfluences={nodes["3"].morphTargetInfluences}
+          position={[-0.832, 1.363, 0.023]}
+        />
+        <mesh
+          name="4"
+          castShadow
+          receiveShadow
+          geometry={nodes["4"].geometry}
+          material={materials["aorta.001"]}
+          morphTargetDictionary={nodes["4"].morphTargetDictionary}
+          morphTargetInfluences={nodes["4"].morphTargetInfluences}
+          position={[-0.336, 2.081, -0.522]}
+        />
+        <mesh
+          name="5"
+          castShadow
+          receiveShadow
+          geometry={nodes["5"].geometry}
+          material={materials["coronary_artery.001"]}
+          morphTargetDictionary={nodes["5"].morphTargetDictionary}
+          morphTargetInfluences={nodes["5"].morphTargetInfluences}
+          position={[-0.066, 1.176, 0.261]}
+        />
+        <mesh
+          name="6"
+          castShadow
+          receiveShadow
+          geometry={nodes["6"].geometry}
+          material={materials["coronary_veins.001"]}
+          morphTargetDictionary={nodes["6"].morphTargetDictionary}
+          morphTargetInfluences={nodes["6"].morphTargetInfluences}
+          position={[-0.165, 0.95, 0.08]}
+        />
       </group>
     </group>
   );
 }
 
-useGLTF.preload("/models/heart3.glb");
+useGLTF.preload("/models/AnimHeart_optimized.glb");
