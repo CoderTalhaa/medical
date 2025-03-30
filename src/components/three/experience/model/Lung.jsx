@@ -1,18 +1,18 @@
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
-export function Brain(props) {
-  const { nodes, materials } = useGLTF("/models/brain.glb");
+export function Lung(props) {
+  const { nodes, materials } = useGLTF("/models/lung.glb");
   return (
     <group {...props} dispose={null}>
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Object_5.geometry}
-        material={materials.material_0}
+        geometry={nodes.Mesh_0.geometry}
+        material={materials.Material_0}
       />
     </group>
   );
 }
 
-useGLTF.preload("/models/brain.glb");
+useGLTF.preload("/models/lung.glb");

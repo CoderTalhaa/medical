@@ -40,10 +40,10 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/T.svg" />
       </head>
       <body
-        className={`${fairplay.variable} ${inter.variable} ${manrope.variable} ${bungee.variable} antialiased text-text2 bg-bg2`}
+        className={`${fairplay.variable} ${inter.variable} ${manrope.variable} ${bungee.variable} antialiased text-text2 bg-black`}
       >
         {/* <Cursor /> */}
-        <Navbar />
+        {/* <Navbar /> */}
         {children}
       </body>
     </html>

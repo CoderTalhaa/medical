@@ -26,7 +26,6 @@ export function Heart(props) {
     } else {
       console.log("No animations found in heart3.glb");
     }
-
     // Cleanup
     return () => {
       if (actions && animations?.length > 0) {
@@ -79,10 +78,10 @@ export function Heart(props) {
           morphTargetDictionary={nodes.heart.morphTargetDictionary}
           morphTargetInfluences={nodes.heart.morphTargetInfluences}
           position={[0.039, 1.033, -0.143]}
-          onPointerOver={() => setHovered(true)}
-          onPointerOut={() => setHovered(false)}
-          onClick={handleClick}
-          material-color={hovered ? "#D81B60" : "white"}
+          // onPointerOver={() => setHovered(true)}
+          // onPointerOut={() => setHovered(false)}
+          // onClick={handleClick}
+          // material-color={hovered ? "#D81B60" : "white"}
         ></mesh>
       </group>
     </group>

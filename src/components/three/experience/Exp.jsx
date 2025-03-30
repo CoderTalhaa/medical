@@ -1,72 +1,21 @@
-import { Box, CameraControls, Sphere, Torus } from "@react-three/drei";
+import { Blood } from "./model/Blood";
 import { Brain } from "./model/Brain";
-import { useEffect, useRef } from "react";
-import useModelStore from "@/store/useStore";
+import { Female } from "./model/Female";
 import { Heart } from "./model/Heart";
-import { motion } from "framer-motion-3d";
-import { AnimatePresence } from "framer-motion";
+import { Lung } from "./model/Lung";
 
 export default function Exp() {
-  const cameraRef = useRef();
-
-  const { cameraPosition, currentModel } = useModelStore();
-
-  useEffect(() => {
-    if (cameraPosition && cameraRef.current) {
-      const { position, target } = cameraPosition;
-      cameraRef.current.setLookAt(
-        ...position, // Camera position
-        ...target, // Look-at target
-        true // Enable smooth transition
-      );
-    }
-  }, [cameraPosition]);
-
-  const modelVariants = {
-    initial: { scale: 0, opacity: 0, rotateY: -Math.PI / 2 },
-    animate: {
-      scale: 1,
-      opacity: 1,
-      rotateY: 0,
-      transition: { type: "spring", stiffness: 100, damping: 10 },
-    },
-    exit: {
-      scale: 0,
-      opacity: 0,
-      rotateY: Math.PI / 2,
-      transition: { duration: 0.4, ease: "easeIn" },
-    },
-  };
-
   return (
     <>
-      <CameraControls
-        ref={cameraRef}
-        verticalDragToForward={true}
-        // dollyToCursor={true}
+      <Brain position={[0, 0.7, -5]} scale={2.5} />
+      <Heart position={[5, 0.5, -20]} scale={1.5} />
+      <Lung position={[20, 1, -25]} scale={2.5} />
+      <Blood
+        position={[30, 1, -15]}
+        scale={2.5}
+        rotation={[0, Math.PI / -1.5, 0]}
       />
-
-      <AnimatePresence mode="wait">
-        <motion.group
-          key={currentModel.name}
-          variants={modelVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-        >
-          {currentModel.name === "brain" && <Brain position={[0, -0.9, 0]} />}
-          {currentModel.name === "heart" && <Heart position={[0, -0.9, 0]} />}
-          {currentModel.name === "lungs" && (
-            <Box args={[1, 1, 1]} position={[0, 0, 0]} />
-          )}
-          {currentModel.name === "liver" && (
-            <Sphere args={[0.5, 32, 32]} position={[0, 0, 0]} />
-          )}
-          {currentModel.name === "kidney" && (
-            <Torus args={[0.4, 0.15, 16, 100]} position={[0, 0, 0]} />
-          )}
-        </motion.group>
-      </AnimatePresence>
+      <Female position={[33, 1, 10]} scale={2.5} />
     </>
   );
 }
