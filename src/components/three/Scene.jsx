@@ -9,11 +9,12 @@ import {
   Stars,
 } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useState, useEffect, useMemo } from "react";
+import { Suspense, useEffect, useMemo, useRef } from "react";
 import Exp from "./experience/Exp";
 import { Physics } from "@react-three/rapier";
 import { Ground } from "./experience/Ground";
 import { Player } from "./experience/Player";
+import useModelStore from "@/store/useStore";
 
 export const Controls = {
   forward: "forward",
@@ -22,6 +23,20 @@ export const Controls = {
   right: "right",
 };
 export default function Scene() {
+  const { content } = useModelStore();
+  const pointerLockControlsRef = useRef();
+
+  useEffect(() => {
+    if (!pointerLockControlsRef.current) return;
+
+    if (content) {
+      console.log("Unlocking pointer...");
+      pointerLockControlsRef.current.unlock();
+    } else {
+      pointerLockControlsRef.current.lock();
+    }
+  }, [content]);
+
   const map = useMemo(
     () => [
       { name: Controls.forward, keys: ["ArrowUp", "KeyW"] },
@@ -66,7 +81,7 @@ export default function Scene() {
           {/* <Grid infiniteGrid={true} /> */}
           <ambientLight intensity={0.5} />
           <Environment preset="warehouse" />
-          <PointerLockControls />
+          {!content && <PointerLockControls ref={pointerLockControlsRef} />}
         </Canvas>
       </KeyboardControls>
     </>

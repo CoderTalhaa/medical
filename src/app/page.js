@@ -52,7 +52,7 @@ export default function Home() {
         {isMuted ? "Unmute" : "Mute"}
       </button> */}
 
-      {/* <Ovarlay /> */}
+      <Ovarlay />
     </>
   );
 }

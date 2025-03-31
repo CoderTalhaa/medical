@@ -1,38 +1,39 @@
 import useModelStore from "@/store/useStore";
 import { AnimatePresence, motion } from "framer-motion";
-import ChangeModel from "./ChangeModel";
 import { X } from "lucide-react";
+import { useState } from "react";
+
 const contentVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.3, ease: "easeOut" },
-  },
-  exit: { opacity: 0, x: -20, transition: { duration: 0.2, ease: "easeIn" } },
+  hidden: { opacity: 0, y: -20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+  exit: { opacity: 0, y: -20, transition: { duration: 0.2 } },
 };
 
-const overlayVariants = {
-  initial: { opacity: 0 },
-  animate: {
-    opacity: 1,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
-  exit: { opacity: 0, transition: { duration: 0.4, ease: "easeIn" } },
-};
+const Accordion = ({ title, children, isOpen, toggle }) => (
+  <div className="border-b border-gray-300">
+    <button
+      onClick={toggle}
+      className="w-full text-left py-3 px-4 flex justify-between items-center focus:outline-none hover:bg-gray-100 transition-colors"
+    >
+      <h3 className="~text-lg/xl font-manrope font-semibold text-blue-700">
+        {title}
+      </h3>
+      <span className="text-gray-600">{isOpen ? "−" : "+"}</span>
+    </button>
+    {isOpen && (
+      <div className="px-4 pb-4 text-gray-800 font-text font-light tracking-tight">
+        {children}
+      </div>
+    )}
+  </div>
+);
 
-export default function Ovarlay() {
-  const {
-    content,
-    setContent,
-    spread,
-    setSpread,
-    setCameraPosition,
-    currentModel,
-  } = useModelStore();
+export default function Overlay() {
+  const { content, setContent } = useModelStore();
+  const [openAccordion, setOpenAccordion] = useState(null);
 
-  const resetCamera = () => {
-    setCameraPosition([3, 1.5, 4], [0, 0.5, 0]);
+  const toggleAccordion = (index) => {
+    setOpenAccordion(openAccordion === index ? null : index);
   };
 
   const closeContent = () => {
@@ -40,104 +41,83 @@ export default function Ovarlay() {
   };
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={currentModel.name}
-        variants={overlayVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        className="fixed inset-0 bg-transparent"
-      >
-        <ChangeModel />
-
-        {/* Content Panel */}
-        <AnimatePresence mode="wait">
-          {content && (
-            <motion.div
-              key={content.heading}
-              variants={contentVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="absolute top-28 left-5 bg-slate-100 text-text2 p-6 rounded-lg h-[80%] max-w-[400px]"
-            >
+    <div className="fixed inset-0 flex items-center justify-center">
+      <AnimatePresence mode="wait">
+        {content && (
+          <motion.div
+            key="content-panel"
+            variants={contentVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="bg-[#f5f5f5] p-6 rounded-lg h-[80%] w-[50%] z-50 overflow-clip"
+          >
+            <div className="flex justify-between p-3 mb-5">
+              <h2 className="~text-xl/4xl font-manrope font-bold">
+                Brain Model Data
+              </h2>
               <motion.button
                 whileHover={{ scale: 1.3 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={closeContent}
-                className="absolute top-2 right-2"
+                className=" text-gray-700 hover:text-red-500 transition-colors"
               >
-                <X />
+                <X size={24} />
               </motion.button>
-              <div className="overflow-y-auto max-h-full flex flex-col gap-2">
-                <h2
-                  className="~text-xl/4xl font-headings"
-                  style={{ color: currentModel.color }}
-                >
-                  {content.heading}
-                </h2>
-                <p className="text-xl font-text font-light pl-1 tracking-tight">
-                  {content.text}
-                </p>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Controls on Right */}
-        <motion.div className="absolute bottom-5 right-5 p-3 bg-[rgba(0,0,0,0.5)] backdrop-blur-sm rounded-lg flex flex-col gap-2">
-          <div>
-            <div className="flex justify-between mb-2">
-              <span className="font-text text-white">Spread</span>
-              <span className="font-text text-white">
-                {(spread * 100).toFixed(0)}%
-              </span>
             </div>
-            <input
-              type="range"
-              min="0"
-              max="1"
-              step="0.01"
-              value={spread}
-              onChange={(e) => setSpread(parseFloat(e.target.value))}
-              style={{
-                width: "200px",
-                height: "20px",
-                cursor: "pointer",
-                accentColor: "#ff7e5f",
-                WebkitAppearance: "none",
-                appearance: "none",
-                background:
-                  "linear-gradient(to right, #ff7e5f 0%, #ff7e5f " +
-                  spread * 100 +
-                  "%, #444 " +
-                  spread * 100 +
-                  "%, #444 100%)",
-                outline: "none",
-                borderRadius: "5px",
-                height: "8px",
-              }}
-            />
-          </div>
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={resetCamera}
-            style={{
-              padding: "10px 20px",
-              background: "rgba(255, 255, 255, 0.2)",
-              color: "white",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-            }}
-          >
-            Reset Camera
-          </motion.button>
-        </motion.div>
-      </motion.div>
-    </AnimatePresence>
+            <div className="overflow-y-auto max-h-full flex flex-col space-y-4">
+              {content.map((category, index) => (
+                <Accordion
+                  key={index}
+                  title={category.category}
+                  isOpen={openAccordion === index}
+                  toggle={() => toggleAccordion(index)}
+                >
+                  {category.items ? (
+                    <ul className="space-y-2">
+                      {category.items.map((item, i) => (
+                        <li key={i}>
+                          <strong className="text-teal-600">
+                            {item.name}:
+                          </strong>{" "}
+                          <span className="text-gray-700">
+                            {item.description}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : category.subcategories ? (
+                    <div className="space-y-3">
+                      {category.subcategories.map((subcat, j) => (
+                        <div key={j}>
+                          <h4 className="font-semibold text-purple-600">
+                            {subcat.name}
+                          </h4>
+                          <ul className="space-y-1 pl-4">
+                            {subcat.items.map((item, k) => (
+                              <li key={k}>
+                                <strong className="text-teal-600">
+                                  {item.name}:
+                                </strong>{" "}
+                                <span className="text-gray-700">
+                                  {item.description}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-gray-700">{category.description}</p>
+                  )}
+                </Accordion>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
