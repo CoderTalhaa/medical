@@ -67,7 +67,7 @@ export default function Scene() {
             fade
             speed={1}
           />
-          <color attach="background" args={["#000"]} />
+          <color attach="background" args={["#15151a"]} />
           {/* <fog attach="fog" args={["#202030", 10, 45]} /> */}
 
           <Suspense fallback={null}>

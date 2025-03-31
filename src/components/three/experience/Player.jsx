@@ -55,11 +55,10 @@ export function Player() {
       colliders={false}
       mass={1}
       type="dynamic"
-      position={[0, 2, 5]} // Starting position
+      position={[5, 2, 20]}
       enabledRotations={[false, false, false]}
     >
-      <CapsuleCollider args={[0.5, 0.5]} />{" "}
-      {/* 0.5m half-height, 0.5m radius */}
+      <CapsuleCollider args={[0.5, 0.5]} />
     </RigidBody>
   );
 }

@@ -8,7 +8,7 @@ export function Blood(props) {
 
   useFrame(() => {
     bloodRefs.current.forEach((ref) => {
-      if (ref) ref.rotation.y += 0.02; // Adjust speed if needed
+      if (ref) ref.rotation.y += 0.02;
     });
   });
 

@@ -21,7 +21,10 @@ const Accordion = ({ title, children, isOpen, toggle }) => (
       <span className="text-gray-600">{isOpen ? "−" : "+"}</span>
     </button>
     {isOpen && (
-      <div className="px-4 pb-4 text-gray-800 font-text font-light tracking-tight">
+      <div
+        className="px-4 pb-4 text-gray-800 font-text font-light tracking-tight overflow-y-auto max-h-[300px]"
+        onWheel={(e) => e.stopPropagation()}
+      >
         {children}
       </div>
     )}
@@ -66,7 +69,7 @@ export default function Overlay() {
               </motion.button>
             </div>
 
-            <div className="overflow-y-auto max-h-full flex flex-col space-y-4">
+            <div className="overflow-y-auto  max-h-full flex flex-col space-y-4">
               {content.map((category, index) => (
                 <Accordion
                   key={index}

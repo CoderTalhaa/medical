@@ -4,11 +4,10 @@ import { brainData } from "@/data/brainData.js";
 import useModelStore from "@/store/useStore";
 
 export function Brain(props) {
-  const { nodes, materials } = useGLTF("/models/brain.glb");
+  const { nodes, materials } = useGLTF("/models/brain_optimized.glb");
   const { setContent } = useModelStore();
 
   const handleClick = () => {
-    // Set the entire brainData array as the content
     setContent(brainData);
   };
   return (
@@ -23,4 +22,4 @@ export function Brain(props) {
   );
 }
 
-useGLTF.preload("/models/brain.glb");
+useGLTF.preload("/models/brain_optimized.glb");
