@@ -35,23 +35,30 @@ export default function Overlay() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="bg-black/20 backdrop-blur-lg p-8 rounded-lg h-[90%] w-[70%] overflow-y-auto"
+            className="bg-black/20 backdrop-blur-lg p-8 rounded-lg h-[90%] w-[70%] overflow-y-auto "
             onWheel={(e) => e.stopPropagation()}
           >
-            <div className="relative flex flex-col h-full">
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              onClick={prevItem}
+              className="text-white absolute top-1/2 left-0 hover:text-teal-300 transition-colors "
+            >
+              <ChevronLeft size={40} />
+            </motion.button>
+            <div className="relative flex flex-col h-full px-5">
               {/* Close Button */}
               <motion.button
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={closeContent}
-                className="absolute top-4 right-4 text-white hover:text-red-400 transition-colors"
+                className="absolute top-4 right-4 text-white hover:text-red-400 transition-colors z-10"
               >
                 <X size={32} />
               </motion.button>
 
               {/* Content Aligned to the Left */}
               <div className="flex-1 flex flex-col justify-start items-start text-white ">
-                <div className="w-full md:pr-20">
+                <div className="w-full">
                   {/* Heading */}
                   <h2 className="text-4xl md:text-5xl font-headings font-bold mb-6 text-left drop-shadow-md underline">
                     {content[currentIndex].category}
@@ -64,7 +71,7 @@ export default function Overlay() {
                         <ol className=" list-inside space-y-3">
                           {content[currentIndex].items.map((item, i) => (
                             <li key={i} className="flex flex-col gap-2 ">
-                              <strong className="text-teal-300 font-manrope text-4xl">
+                              <strong className="text-teal-300 font-manrope text-3xl">
                                 {item.name}:
                               </strong>
                               <p className="font-text">{item.description}</p>
@@ -106,25 +113,15 @@ export default function Overlay() {
               </div>
 
               {/* Navigation Arrows */}
-              <div className="flex justify-start mt-6 pl-8 space-x-4">
-                <motion.button
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={prevItem}
-                  className="text-white hover:text-teal-300 transition-colors"
-                >
-                  <ChevronLeft size={40} />
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={nextItem}
-                  className="text-white hover:text-teal-300 transition-colors"
-                >
-                  <ChevronRight size={40} />
-                </motion.button>
-              </div>
             </div>
+
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              onClick={nextItem}
+              className="text-white absolute top-1/2 right-0 hover:text-teal-300 transition-colors"
+            >
+              <ChevronRight size={40} />
+            </motion.button>
           </motion.div>
         )}
       </AnimatePresence>

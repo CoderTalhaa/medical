@@ -6,7 +6,7 @@ import useModelStore from "@/store/useStore";
 import { AnimatePresence, motion } from "framer-motion";
 import gsap from "gsap";
 import Lenis from "lenis";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useAudio from "@/hooks/useAudio";
 
 export default function Home() {
@@ -46,6 +46,7 @@ export default function Home() {
   return (
     <>
       {isLoading && <LoadingScreen setIsLoading={setIsLoading} />}
+
       <div className="dot" />
       <Scene />
       {/* <button className="absolute bottom-52 right-5 z-10" onClick={toggleMute}>
