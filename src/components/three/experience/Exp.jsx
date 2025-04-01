@@ -7,8 +7,8 @@ import { Lung } from "./model/Lung";
 export default function Exp() {
   return (
     <>
-      <group position={[10, 1, 0]} scale={1.7}>
-        <Brain />
+      <group position={[10, 1, 0]}>
+        <Brain scale={3} />
       </group>
       <group position={[3.09, 0, 9.51]} scale={1.4}>
         <Heart />
