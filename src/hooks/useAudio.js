@@ -1,92 +1,88 @@
 // src/hooks/useAudio.js
-import { useEffect, useRef, useState } from "react";
+import { useState, useEffect } from "react";
 import { Howl } from "howler";
-import useModelStore from "@/store/useStore";
 
-const useAudio = () => {
-  const { currentModel } = useModelStore();
-  const [isMuted, setIsMuted] = useState(false);
-  const audioRefs = useRef({
-    background: null,
-    model: null,
-  });
+export default function useAudio(modelPositions) {
+  const [sounds, setSounds] = useState({});
 
-  // Audio configuration
-  const audioMap = {
-    // brain: { src: "/audio/ambient_brain.mp3", volume: 0.5 },
-    heart: { src: "/audio/heartbeat.mp3", volume: 0.8 },
-    // lungs: { src: "/audio/breathing.mp3", volume: 0.7 },
-    // liver: { src: "/audio/ambient_liver.mp3", volume: 0.5 },
-    // kidney: { src: "/audio/ambient_kidney.mp3", volume: 0.5 },
-  };
-
-  // Initialize audio
+  // Initialize sounds
   useEffect(() => {
-    audioRefs.current.background = new Howl({
+    const backgroundSound = new Howl({
       src: ["/audio/background.mp3"],
       loop: true,
-      volume: 0.3,
-      autoplay: true,
+      volume: 0.8, // Default volume, controlled externally
     });
 
-    audioRefs.current.model = new Howl({
-      src: ["/audio/placeholder.mp3"],
-      loop: true,
-      volume: 0,
-    });
+    const modelSounds = {
+      brain: new Howl({
+        src: ["/audio/brain.mp3"],
+        volume: 0,
+      }),
+      lung: new Howl({
+        src: ["/audio/lung.mp3"],
+        volume: 0,
+      }),
+      heart: new Howl({
+        src: ["/audio/heart.mp3"],
+        volume: 0,
+      }),
+      blood: new Howl({
+        src: ["/audio/blood.mp3"],
+        volume: 0,
+      }),
+      female: new Howl({
+        src: ["/audio/female.mp3"],
+        volume: 0,
+      }),
+    };
 
+    // Start background sound
+    backgroundSound.play();
+
+    setSounds({ background: backgroundSound, ...modelSounds });
+
+    // Cleanup
     return () => {
-      audioRefs.current.background.unload();
-      audioRefs.current.model.unload();
+      backgroundSound.stop();
+      Object.values(modelSounds).forEach((sound) => sound.stop());
     };
-  }, []);
+  }, []); // No dependencies, runs once on mount
 
-  // Update model-specific audio
-  useEffect(() => {
-    const background = audioRefs.current.background;
-    const model = audioRefs.current.model;
-    const currentAudio = audioMap[currentModel.name] || {
-      src: null,
-      volume: 0,
-    };
+  // Function to update sound based on camera position and mute state
+  const updateSound = (camera, isMuted) => {
+    if (!sounds.background || !camera) return;
 
-    model.stop();
+    const cameraPos = camera.position;
+    let isNearModel = false;
 
-    if (currentAudio.src) {
-      model._src = currentAudio.src;
-      model.load();
-      model.volume(isMuted ? 0 : currentAudio.volume);
-      model.play();
-      background.volume(isMuted ? 0 : 0.2); // Adjust background based on mute
-    } else {
-      model.volume(0);
-      background.volume(isMuted ? 0 : 0.3);
-    }
-  }, [currentModel.name, isMuted]);
+    Object.keys(modelPositions).forEach((model) => {
+      const modelPos = modelPositions[model];
+      const distance = cameraPos.distanceTo({
+        x: modelPos[0],
+        y: modelPos[1],
+        z: modelPos[2],
+      });
 
-  // Toggle mute
-  const toggleMute = () => {
-    setIsMuted((prev) => {
-      const newMuted = !prev;
-      const background = audioRefs.current.background;
-      const model = audioRefs.current.model;
+      const proximityThreshold = 5;
+      const sound = sounds[model];
 
-      if (newMuted) {
-        // Mute: Set both volumes to 0
-        background.volume(0);
-        model.volume(0);
+      if (distance < proximityThreshold) {
+        isNearModel = true;
+        if (!sound.playing() && !isMuted) sound.play();
+        sound.volume(
+          isMuted ? 0 : Math.max(0, 1 - distance / proximityThreshold)
+        );
+        sounds.background.volume(isMuted ? 0 : 0.2);
       } else {
-        // Unmute: Restore volumes based on current model
-        background.volume(audioMap[currentModel.name]?.src ? 0.2 : 0.3);
-        model.volume(audioMap[currentModel.name]?.volume || 0);
-        if (!model.playing()) model.play(); // Ensure model audio restarts if stopped
+        sound.volume(0);
+        if (sound.playing()) sound.stop();
       }
-
-      return newMuted;
     });
+
+    if (!isNearModel) {
+      sounds.background.volume(isMuted ? 0 : 0.5);
+    }
   };
 
-  return { toggleMute, isMuted };
-};
-
-export default useAudio;
+  return { sounds, updateSound };
+}

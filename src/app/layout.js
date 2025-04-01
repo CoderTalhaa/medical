@@ -1,12 +1,11 @@
-import { Inter, Playfair_Display, Manrope, Bungee } from "next/font/google";
+import { Inter, Manrope, Bungee, Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/utils/nav/Navbar";
-import Cursor from "@/components/utils/Cursor";
 
-const fairplay = Playfair_Display({
+const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "700"],
-  variable: "--font-fairplay",
+  variable: "--font-montserrat",
 });
 
 const inter = Inter({
@@ -40,7 +39,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/T.svg" />
       </head>
       <body
-        className={`${fairplay.variable} ${inter.variable} ${manrope.variable} ${bungee.variable} antialiased text-text2 bg-black`}
+        className={`${montserrat.variable} ${inter.variable} ${manrope.variable} ${bungee.variable} antialiased text-text2 bg-black`}
       >
         {/* <Cursor /> */}
         <Navbar />

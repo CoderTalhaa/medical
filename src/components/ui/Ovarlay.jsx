@@ -1,6 +1,7 @@
 import useModelStore from "@/store/useStore";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 
 const contentVariants = {
@@ -35,7 +36,7 @@ export default function Overlay() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="bg-black/20 backdrop-blur-lg p-8 rounded-lg h-[90%] w-[70%] overflow-y-auto "
+            className="bg-stone-900 bg-clip-padding backdrop-filter  backdrop-blur bg-opacity-10 backdrop-saturate-100 backdrop-contrast-100 p-8 rounded-lg h-[90%] w-[70%] overflow-y-auto "
             onWheel={(e) => e.stopPropagation()}
           >
             <motion.button
@@ -65,13 +66,24 @@ export default function Overlay() {
                   </h2>
 
                   {/* Content Layout */}
-                  <div className="text-lg md:text-xl font-manrope font-light tracking-tight text-left drop-shadow-sm">
+                  <div className="text-lg md:text-xl text-left drop-shadow-sm">
                     {content[currentIndex].items ? (
                       <>
                         <ol className=" list-inside space-y-3">
                           {content[currentIndex].items.map((item, i) => (
                             <li key={i} className="flex flex-col gap-2 ">
-                              <strong className="text-teal-300 font-manrope text-3xl">
+                              {item.img && (
+                                <div className="w-44 scale-110 pb-5">
+                                  <Image
+                                    alt="logo"
+                                    src={item.img}
+                                    width={1000}
+                                    height={1000}
+                                  />
+                                </div>
+                              )}
+
+                              <strong className="text-teal-300 font-headings font-semibold text-2xl">
                                 {item.name}:
                               </strong>
                               <p className="font-text">{item.description}</p>
@@ -84,7 +96,7 @@ export default function Overlay() {
                         {content[currentIndex].subcategories.map(
                           (subcat, j) => (
                             <div key={j} className="mb-6">
-                              <h4 className="text-3xl font-semibold text-purple-300 mb-2">
+                              <h4 className="text-3xl underline font-semibold text-purple-300 mb-2">
                                 {subcat.name}
                               </h4>
                               <ol className="list-decimal list-inside space-y-2">
@@ -111,8 +123,6 @@ export default function Overlay() {
                   </div>
                 </div>
               </div>
-
-              {/* Navigation Arrows */}
             </div>
 
             <motion.button

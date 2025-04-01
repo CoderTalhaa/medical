@@ -1,10 +1,26 @@
+import { useFrame } from "@react-three/fiber";
 import { Blood } from "./model/Blood";
 import { Brain } from "./model/Brain";
 import { Female } from "./model/Female";
 import { Heart } from "./model/Heart";
 import { Lung } from "./model/Lung";
+import useAudio from "@/hooks/useAudio";
 
-export default function Exp() {
+export default function Exp({ isMuted }) {
+  const modelPositions = {
+    brain: [10, 1, 0],
+    heart: [3.09, 0, 9.51],
+    lung: [-8.09, 0.5, 5.88],
+    female: [-8.09, 1, -5.88],
+    blood: [3.09, 0, -25],
+  };
+
+  const { updateSound } = useAudio(modelPositions);
+
+  useFrame(({ camera }) => {
+    updateSound(camera, isMuted);
+  });
+
   return (
     <>
       <group position={[10, 1, 0]}>

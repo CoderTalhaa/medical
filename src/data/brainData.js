@@ -4,6 +4,7 @@ export const brainData = [
     items: [
       {
         name: "Roche",
+        img: "/img/roche.png",
         description:
           "Roche is committed to advancing innovations in the diagnosis and treatment of neurological conditions, with a particular focus on neurodegenerative diseases and neuromuscular disorders. The company is dedicated to improving the lives of patients through groundbreaking medical solutions.",
       },

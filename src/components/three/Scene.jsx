@@ -22,7 +22,7 @@ export const Controls = {
   left: "left",
   right: "right",
 };
-export default function Scene() {
+export default function Scene({ showWelcome, isMuted }) {
   const { content } = useModelStore();
   const pointerLockControlsRef = useRef();
 
@@ -72,7 +72,7 @@ export default function Scene() {
 
           <Suspense fallback={null}>
             <Physics>
-              <Exp />
+              <Exp isMuted={isMuted} />
               <Ground />
               <Player />
             </Physics>
@@ -81,7 +81,9 @@ export default function Scene() {
           {/* <Grid infiniteGrid={true} /> */}
           <ambientLight intensity={0.5} />
           <Environment preset="warehouse" />
-          {!content && <PointerLockControls ref={pointerLockControlsRef} />}
+          {!showWelcome && !content && (
+            <PointerLockControls ref={pointerLockControlsRef} />
+          )}
         </Canvas>
       </KeyboardControls>
     </>

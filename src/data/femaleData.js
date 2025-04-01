@@ -4,6 +4,7 @@ export const femaleData = [
     items: [
       {
         name: "Bayer",
+        img: "/img/bayer.png",
         description:
           "A leading life sciences company that focuses on healthcare and agriculture. Bayer is committed to advancing reproductive health, hormonal therapies, and fertility solutions for women. The company develops scientifically backed treatments to improve the quality of life for women, focusing on accessible and innovative healthcare solutions in the female reproductive system and overall womens health.",
       },

@@ -20,7 +20,7 @@ module.exports = {
     screens,
     fontSize,
     fontFamily: {
-      headings: "var(--font-fairplay)",
+      headings: "var(--font-montserrat)",
       text: "var(--font-inter)",
       manrope: "var(--font-manrope)",
       bungee: "var(--font-bungee)",

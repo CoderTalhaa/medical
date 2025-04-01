@@ -4,6 +4,7 @@ export const lungData = [
     items: [
       {
         name: "Gebro Pharma",
+        img: "/img/gebra.png",
         description:
           "A Spanish pharmaceutical company specializing in the development and commercialization of treatments across various therapeutic areas, including pain management, respiratory conditions, autoimmune diseases, and urogynecology. The companys focus on respiratory diseases aligns with its commitment to improving patient outcomes in lung-related health.",
       },

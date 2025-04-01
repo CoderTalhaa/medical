@@ -4,6 +4,7 @@ export const bloodData = [
     items: [
       {
         name: "Grifols (TBC)",
+        img: "/img/Grifols.png",
         description:
           "A global healthcare company specializing in plasma-derived medicines, transfusion diagnostics, and hospital pharmacy solutions. Grifols is a leader in advancing plasma science and biopharmaceutical therapies, with a strong focus on oncology, immunology, and the development of innovative treatments derived from blood and plasma.",
       },

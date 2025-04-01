@@ -4,6 +4,7 @@ export const heartData = [
     items: [
       {
         name: "Novartis (tbc)",
+        img: "/img/Novartis.png",
         description:
           "A global healthcare company focused on advancing treatments for a wide range of diseases, including cardiovascular health. Novartis is particularly dedicated to developing innovative therapies for heart failure, atherosclerosis, hypertension, and other cardiovascular conditions.",
       },
