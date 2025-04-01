@@ -10,8 +10,8 @@ export default function Exp() {
       <group position={[10, 1, 0]}>
         <Brain scale={3} />
       </group>
-      <group position={[3.09, 0, 9.51]} scale={1.4}>
-        <Heart />
+      <group position={[3.09, 0, 9.51]}>
+        <Heart scale={1.7} />
       </group>
       <group position={[-8.09, 0.5, 5.88]} scale={1}>
         <Lung />

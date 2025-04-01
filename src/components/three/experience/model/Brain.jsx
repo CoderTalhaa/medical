@@ -3,10 +3,6 @@ import { Html, useGLTF } from "@react-three/drei";
 import { brainData } from "@/data/brainData.js";
 import useModelStore from "@/store/useStore";
 import { Info } from "lucide-react";
-import { extend } from "@react-three/fiber";
-import { geometry } from "maath";
-
-extend(geometry);
 
 export function Brain(props) {
   const { nodes, materials } = useGLTF("/models/brain_optimized.glb");
