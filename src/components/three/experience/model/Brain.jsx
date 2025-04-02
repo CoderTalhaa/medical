@@ -1,16 +1,11 @@
 import React, { useRef } from "react";
-import { Html, useGLTF } from "@react-three/drei";
-import { brainData } from "@/data/brainData.js";
-import useModelStore from "@/store/useStore";
-import { Info } from "lucide-react";
+import { useGLTF } from "@react-three/drei";
+import Annotation from "../Annotation";
+import { brainCategories } from "@/data/brainData.js";
 
 export function Brain(props) {
   const { nodes, materials } = useGLTF("/models/brain_optimized.glb");
-  const { setContent } = useModelStore();
 
-  const handleClick = () => {
-    setContent(brainData);
-  };
   return (
     <>
       <group {...props} dispose={null}>
@@ -21,17 +16,26 @@ export function Brain(props) {
           material={materials.material_0}
         />
       </group>
-      <Html
-        position={[0, 1, 0]}
-        occlude="blending"
-        transform
-        geometry={<circleGeometry args={[0.2, 32]} />}
-        onClick={handleClick}
-      >
-        <div className=" ">
-          <Info size={15} />
-        </div>
-      </Html>
+      <Annotation
+        position={[0, 5, -3]}
+        categoryIndex={0}
+        categories={brainCategories}
+      />
+      <Annotation
+        position={[2, 3, -3]}
+        categoryIndex={1}
+        categories={brainCategories}
+      />
+      <Annotation
+        position={[-2, 3, -3]}
+        categoryIndex={2}
+        categories={brainCategories}
+      />
+      <Annotation
+        position={[0, 2, -3]}
+        categoryIndex={3}
+        categories={brainCategories}
+      />
     </>
   );
 }

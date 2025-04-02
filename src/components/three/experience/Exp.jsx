@@ -6,37 +6,36 @@ import { Heart } from "./model/Heart";
 import { Lung } from "./model/Lung";
 import useAudio from "@/hooks/useAudio";
 
-export default function Exp({ isMuted }) {
+export default function Exp() {
   const modelPositions = {
-    brain: [10, 1, 0],
+    brain: [10, -1, 0],
     heart: [3.09, 0, 9.51],
     lung: [-8.09, 0.5, 5.88],
-    female: [-8.09, 1, -5.88],
     blood: [3.09, 0, -25],
   };
 
   const { updateSound } = useAudio(modelPositions);
 
   useFrame(({ camera }) => {
-    updateSound(camera, isMuted);
+    updateSound(camera);
   });
 
   return (
     <>
-      <group position={[10, 1, 0]}>
-        <Brain scale={3} />
+      <group position={modelPositions.brain}>
+        <Brain scale={5} />
       </group>
-      <group position={[3.09, 0, 9.51]}>
+      <group position={modelPositions.heart}>
         <Heart scale={1.7} />
       </group>
-      <group position={[-8.09, 0.5, 5.88]} scale={1}>
+      <group position={modelPositions.lung} scale={1}>
         <Lung />
       </group>
       <group position={[-8.09, 1, -5.88]} scale={1.5}>
         <Female />
       </group>
       <group
-        position={[3.09, 0, -25]}
+        position={modelPositions.blood}
         rotation={[0, Math.PI / 1.7, 0]}
         scale={1}
       >

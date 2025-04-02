@@ -1,4 +1,7 @@
-export const brainData = [
+// src/data/brainData.js
+
+// Main Sponsor Category
+const mainSponsor = [
   {
     category: "Main Sponsor",
     items: [
@@ -10,6 +13,10 @@ export const brainData = [
       },
     ],
   },
+];
+
+// Supporting Stakeholders Category
+const supportingStakeholders = [
   {
     category: "Supporting Stakeholders",
     subcategories: [
@@ -194,6 +201,10 @@ export const brainData = [
       },
     ],
   },
+];
+
+// Panel Discussion Category
+const panelDiscussion = [
   {
     category: "Panel Discussion",
     title:
@@ -201,6 +212,10 @@ export const brainData = [
     description:
       "This panel will explore how emerging technologies, such as Brain-Computer Interfaces (BCIs), wearable devices, and Artificial Intelligence (AI), are transforming personalized care in neuroscience. The discussion will highlight advancements in diagnosis, treatment, and patient outcomes, demonstrating the potential for these technologies to revolutionize the field.",
   },
+];
+
+// Open Innovation Challenges Category
+const openInnovationChallenges = [
   {
     category: "Open Innovation Challenges",
     items: [
@@ -225,3 +240,11 @@ export const brainData = [
     ],
   },
 ];
+
+// Export all categories in an object
+export const brainCategories = {
+  mainSponsor,
+  supportingStakeholders,
+  panelDiscussion,
+  openInnovationChallenges,
+};

@@ -2,14 +2,15 @@
 import Scene from "@/components/three/Scene";
 import Ovarlay from "@/components/ui/Ovarlay";
 import LoadingScreen from "@/components/utils/loadingScreen/LoadingScreen";
+import useAudio from "@/hooks/useAudio";
 import useModelStore from "@/store/useStore";
 import Lenis from "lenis";
 import React, { useEffect, useState } from "react";
 
 export default function Home() {
   const { isLoading, setIsLoading } = useModelStore();
-  const [isMuted, setIsMuted] = useState(false);
   const [showWelcome, setShowWelcome] = useState(true);
+  const { toggleMute, isMuted } = useAudio();
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -67,10 +68,10 @@ export default function Home() {
       )}
 
       <div className="dot" />
-      <Scene showWelcome={showWelcome} isMuted={isMuted} />
+      <Scene showWelcome={showWelcome} />
 
       <button
-        onClick={() => setIsMuted((prev) => !prev)}
+        onClick={toggleMute}
         style={{
           position: "absolute",
           bottom: "20px",

@@ -22,7 +22,7 @@ export const Controls = {
   left: "left",
   right: "right",
 };
-export default function Scene({ showWelcome, isMuted }) {
+export default function Scene({ showWelcome }) {
   const { content } = useModelStore();
   const pointerLockControlsRef = useRef();
 
@@ -72,9 +72,9 @@ export default function Scene({ showWelcome, isMuted }) {
 
           <Suspense fallback={null}>
             <Physics>
-              <Exp isMuted={isMuted} />
-              <Ground />
+              <Exp />
               <Player />
+              <Ground />
             </Physics>
           </Suspense>
 
