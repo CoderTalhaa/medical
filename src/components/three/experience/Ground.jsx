@@ -15,7 +15,7 @@ export function Ground() {
   return (
     <RigidBody type="fixed" colliders="cuboid" position={[0, 0, 0]}>
       <mesh visible={true} rotation={[-Math.PI / 2, 0, 0]}>
-        <planeGeometry args={[100, 100]} />
+        <planeGeometry args={[120, 120]} />
         <meshStandardMaterial fog={true} map={map} />
       </mesh>
     </RigidBody>
