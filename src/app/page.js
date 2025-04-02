@@ -49,13 +49,18 @@ export default function Home() {
       {showWelcome && (
         <div className="fixed inset-0 h-full w-full bg-[#0000008a] backdrop-blur-lg z-[999] flex justify-center items-center ">
           <div className="border h-[50%] border-gray-400 rounded-xl p-8 shadow-2xl backdrop-blur-sm flex flex-col items-center justify-center text-center ">
-            <h1 className="~text-2xl/5xl font-manrope font-bold text-white mb-4">
-              Welcome to the VR Experience
+            <h1 className="~text-2xl/3xl font-manrope font-bold text-white mb-4">
+              Welcome to the Health Revolution Congress (The VR experience)!
             </h1>
             <p className="text-white font-text max-w-xl pb-10">
-              Journey inside the human body and explore different organs like
-              never before. Immerse yourself in an interactive and educational
-              adventure.
+              Step into a virtual journey through the Health Revolution
+              Congress! Immerse yourslef in an intractive exploration of the
+              human body, navigating through its organ to uncover exiciting
+              sessions, insightful discussions, and innovative challenges that
+              will shape the day. Discover the groundbreaking innovations and
+              leading Stakeholders who will be attending and bringing this event
+              to life. Your mission is to explore, find and click on the icons
+              to unlock more information about the event!
             </p>
             <button
               onClick={() => setShowWelcome(false)}

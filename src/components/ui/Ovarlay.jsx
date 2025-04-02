@@ -18,7 +18,10 @@ export default function Overlay() {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50">
+    <div
+      className="fixed inset-0 flex items-center justify-center z-50"
+      style={{ zIndex: content ? 50 : 0 }}
+    >
       <AnimatePresence mode="wait">
         {content && (
           <motion.div

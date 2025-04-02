@@ -5,14 +5,23 @@ import { Female } from "./model/Female";
 import { Heart } from "./model/Heart";
 import { Lung } from "./model/Lung";
 import useAudio from "@/hooks/useAudio";
+import { NeuronParticles } from "./model/NeuronParticles";
 
 export default function Exp() {
   const modelPositions = {
-    brain: [10, -1, 0],
-    heart: [3.09, 0, 9.51],
-    lung: [-8.09, 0.5, 5.88],
-    blood: [3.09, 0, -25],
+    brain: [15, -1, 0],
+    heart: [5, 0, 15],
+    lung: [-15, 0.5, 10],
+    blood: [5, 0, -35],
   };
+
+  const organPositions = [
+    [15, 1, 0], // Brain
+    [5, 1, 15], // Heart
+    [-15, 1, 10], // Lung
+    [-12, 1, -10], // Female
+    [5, 1, -35], // Blood
+  ];
 
   const { updateSound } = useAudio(modelPositions);
 
@@ -22,6 +31,8 @@ export default function Exp() {
 
   return (
     <>
+      <NeuronParticles positions={organPositions} />
+
       <group position={modelPositions.brain}>
         <Brain scale={5} />
       </group>
@@ -31,7 +42,7 @@ export default function Exp() {
       <group position={modelPositions.lung} scale={1}>
         <Lung />
       </group>
-      <group position={[-8.09, 1, -5.88]} scale={1.5}>
+      <group position={[-12, 1, -10]} scale={1.5}>
         <Female />
       </group>
       <group

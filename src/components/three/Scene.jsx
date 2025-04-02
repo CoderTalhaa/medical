@@ -15,6 +15,8 @@ import { Physics } from "@react-three/rapier";
 import { Ground } from "./experience/Ground";
 import { Player } from "./experience/Player";
 import useModelStore from "@/store/useStore";
+import SkyBillboard from "./experience/SkyBillboard";
+import Background from "./experience/Background";
 
 export const Controls = {
   forward: "forward",
@@ -55,9 +57,11 @@ export default function Scene({ showWelcome }) {
           shadows
           dpr={[1, 1.5]}
           gl={{ antialias: false }}
-          camera={{ position: [0, 2, 0], fov: 75 }}
+          camera={{ position: [0, 2, 0], fov: 60 }}
           className="canvas"
         >
+          <Background />
+          <SkyBillboard />
           <Stars
             radius={100}
             depth={50}
@@ -68,7 +72,7 @@ export default function Scene({ showWelcome }) {
             speed={1}
           />
           <color attach="background" args={["#15151a"]} />
-          {/* <fog attach="fog" args={["#202030", 10, 45]} /> */}
+          <fog attach="fog" args={["#0a0a0a", 10, 60]} />
 
           <Suspense fallback={null}>
             <Physics>
@@ -80,7 +84,7 @@ export default function Scene({ showWelcome }) {
 
           {/* <Grid infiniteGrid={true} /> */}
           <ambientLight intensity={0.5} />
-          <Environment preset="warehouse" />
+          <Environment preset="city" />
           {!showWelcome && !content && (
             <PointerLockControls ref={pointerLockControlsRef} />
           )}

@@ -11,14 +11,14 @@ export default function useAudio(modelPositions) {
     const backgroundSound = new Howl({
       src: ["/audio/background2.mp3"],
       loop: true,
-      volume: 0.5,
+      volume: 0.01,
     });
 
     const modelSounds = {
       brain: new Howl({ src: ["/audio/brain.mp3"], volume: 0 }),
       heart: new Howl({ src: ["/audio/heart.mp3"], volume: 0 }),
-      lung: new Howl({ src: ["/audio/lung.mp3"], volume: 0 }),
-      blood: new Howl({ src: ["/audio/blood.mp3"], volume: 0 }),
+      lung: new Howl({ src: ["/audio/lung.mp3"], volume: 50 }),
+      blood: new Howl({ src: ["/audio/blood.mp3"], volume: 10 }),
     };
 
     backgroundSound.play();
@@ -60,20 +60,19 @@ export default function useAudio(modelPositions) {
         z: modelPos[2],
       });
 
-      const threshold = 5;
+      const threshold = 15;
       const sound = sounds[model];
 
       if (distance < threshold) {
         isNearModel = true;
         if (sound) {
-          // Skip if no sound (e.g., female)
           if (!sound.playing() && !isMuted) sound.play();
           // Adjusted volume: scales from 0.3 to 1 based on distance
           sound.volume(
-            isMuted ? 0 : Math.min(1, 0.3 + 0.7 * (1 - distance / threshold))
+            isMuted ? 0 : Math.min(1, 0.1 + 0.9 * (1 - distance / threshold))
           );
         }
-        sounds.background.volume(isMuted ? 0 : 0.05);
+        sounds.background.volume(isMuted ? 0 : 0);
       } else if (sound) {
         sound.volume(0);
         if (sound.playing()) sound.stop();
@@ -81,7 +80,7 @@ export default function useAudio(modelPositions) {
     });
 
     if (!isNearModel) {
-      sounds.background.volume(isMuted ? 0 : 0.5);
+      sounds.background.volume(isMuted ? 0 : 0.01);
     }
   };
 

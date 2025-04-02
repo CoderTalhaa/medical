@@ -1,11 +1,22 @@
 import { RigidBody } from "@react-three/rapier";
+import { useTexture } from "@react-three/drei";
+import { useEffect } from "react";
+import * as THREE from "three";
 
 export function Ground() {
+  const map = useTexture("/img/ground.jpg");
+
+  useEffect(() => {
+    map.repeat.set(3, 3);
+    map.wrapS = map.wrapT = THREE.RepeatWrapping;
+    map.needsUpdate = true;
+  }, []);
+
   return (
-    <RigidBody type="fixed" position={[0, 0, 0]}>
-      <mesh rotation={[-Math.PI / 2, 0, 0]}>
+    <RigidBody type="fixed" colliders="cuboid" position={[0, 0, 0]}>
+      <mesh visible={true} rotation={[-Math.PI / 2, 0, 0]}>
         <planeGeometry args={[100, 100]} />
-        <meshStandardMaterial color="#12181d" />
+        <meshStandardMaterial fog={true} map={map} />
       </mesh>
     </RigidBody>
   );
