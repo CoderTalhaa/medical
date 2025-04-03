@@ -1,6 +1,6 @@
 import useModelStore from "@/store/useStore";
 import { Html } from "@react-three/drei";
-import { Info } from "lucide-react";
+import { Star, Users, Pyramid, Puzzle } from "lucide-react";
 
 export default function Annotation({
   position,
@@ -16,6 +16,13 @@ export default function Annotation({
     setContent(categoryContent);
   };
 
+  const icons = [
+    <Star size={12} />,
+    <Pyramid size={12} />,
+    <Users size={12} />,
+    <Puzzle size={12} />,
+  ];
+
   return (
     <>
       <Html
@@ -23,11 +30,11 @@ export default function Annotation({
         rotation={rotation}
         occlude="blending"
         transform
-        geometry={<circleGeometry args={[0.15, 32]} />}
+        geometry={<circleGeometry args={[0.2, 32]} />}
         onClick={handleClick}
       >
         <div>
-          <Info size={15} />
+          <div>{icons[categoryIndex]}</div>
         </div>
       </Html>
     </>

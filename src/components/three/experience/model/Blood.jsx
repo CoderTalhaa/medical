@@ -45,7 +45,7 @@ export function Blood(props) {
       </group>
       <Annotation
         rotation={[0, 1.5, 0]}
-        position={[-12.5, 3, -2.5]}
+        position={[-13.2, 2.4, -2.6]}
         categoryIndex={0}
         categories={bloodCategories}
       />

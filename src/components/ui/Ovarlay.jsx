@@ -74,7 +74,7 @@ export default function Overlay() {
                           ))}
                         </ol>
                         {content[0].description && (
-                          <p className="font-text mt-4 italic text-teal-200">
+                          <p className="font-text ~text-xl/4xl mt-20 text-center text-teal-200">
                             {content[0].description}
                           </p>
                         )}
@@ -113,15 +113,26 @@ export default function Overlay() {
                         )}
                         <p className="font-text">{content[0].description}</p>
                         {content[0].panelists && (
-                          <div className="mt-4">
+                          <div className="mt-5">
                             <h4 className="text-xl font-semibold text-purple-300 mb-2">
                               Panelists:
                             </h4>
-                            <ul className="list-disc list-inside space-y-1">
+                            <ul className="flex gap-2">
                               {content[0].panelists.map((panelist, i) => (
-                                <li key={i} className="font-text">
-                                  {panelist}
-                                </li>
+                                <div
+                                  key={i}
+                                  className="flex flex-col flex-1 items-center "
+                                >
+                                  <div className="w-36 h-36 scale-125">
+                                    <Image
+                                      src={"/img/user.png"}
+                                      width={100}
+                                      height={100}
+                                      alt="logo"
+                                    />
+                                  </div>
+                                  <p className="font-text">{panelist}</p>
+                                </div>
                               ))}
                             </ul>
                           </div>
