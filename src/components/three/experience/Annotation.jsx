@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import useModelStore from "@/store/useStore";
 import { Html } from "@react-three/drei";
 import { Star, Users, Pyramid, Puzzle } from "lucide-react";
