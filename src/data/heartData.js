@@ -1,15 +1,22 @@
-export const heartData = [
+// src/data/heartData.js
+
+// Main Sponsor Category
+const mainSponsor = [
   {
     category: "Main Sponsor",
     items: [
       {
-        name: "Novartis (tbc)",
+        name: "Novartis",
         img: "/img/Novartis.png",
         description:
           "A global healthcare company focused on advancing treatments for a wide range of diseases, including cardiovascular health. Novartis is particularly dedicated to developing innovative therapies for heart failure, atherosclerosis, hypertension, and other cardiovascular conditions.",
       },
     ],
   },
+];
+
+// Supporting Stakeholders Category
+const supportingStakeholders = [
   {
     category: "Supporting Stakeholders",
     subcategories: [
@@ -165,13 +172,27 @@ export const heartData = [
       },
     ],
   },
+];
+
+// Panel Discussion Category
+const panelDiscussion = [
   {
     category: "Panel Discussion",
     title:
       "The AI Revolution, From Hype to Real-World Impact in Cardiovascular Medicine",
     description:
       "This panel will explore the real-world impact of artificial intelligence on cardiovascular care, moving beyond the initial hype. Experts will discuss how AI is transforming disease detection, diagnosis, and treatment in cardiology, with a focus on predictive analytics, medical imaging, and personalized medicine. The discussion will also touch on the integration of AI in clinical practice and its potential to revolutionize cardiovascular healthcare.",
+    panelists: [
+      "Andreas Wüpper, Managing Director, Fresenius Medical Care Ventures GmbH",
+      "Antoni Plasència, Managing Director, Recerca i Innovació en Salut",
+      "Jackson Jerrold, Director, Mayo Clinic",
+      "Alex Ceschel, Vice President, 47Labs",
+    ],
   },
+];
+
+// Open Innovation Challenges Category
+const openInnovationChallenges = [
   {
     category: "Open Innovation Challenges",
     items: [
@@ -194,5 +215,15 @@ export const heartData = [
           "This challenge seeks innovative fall detection solutions for elderly care that combine high accuracy with predictive analytics to prevent falls before they happen. The ideal technologies include AI-driven monitoring, wearable sensors, IoT, and remote assistance integration to improve safety, autonomy, and rapid emergency response for elderly patients, especially those with cardiovascular risks.",
       },
     ],
+    description:
+      "Think you have a solution? Innovate and be part of the revolution!",
   },
 ];
+
+// Export all categories in an object
+export const heartCategories = {
+  mainSponsor,
+  supportingStakeholders,
+  panelDiscussion,
+  openInnovationChallenges,
+};

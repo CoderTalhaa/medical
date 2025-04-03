@@ -1,12 +1,7 @@
 import React, { useEffect, useRef } from "react";
-import { useGLTF, useAnimations, Html } from "@react-three/drei";
-import { lungData } from "@/data/lungData.js";
-import useModelStore from "@/store/useStore";
-import { Info } from "lucide-react";
-import { extend } from "@react-three/fiber";
-import { geometry } from "maath";
-
-extend(geometry);
+import { useGLTF, useAnimations } from "@react-three/drei";
+import Annotation from "../Annotation";
+import { lungCategories } from "@/data/lungData.js";
 
 export function Lung(props) {
   const group = useRef();
@@ -14,12 +9,6 @@ export function Lung(props) {
     "/models/AnimLung_optimized.glb"
   );
   const { actions } = useAnimations(animations, group);
-
-  const { setContent } = useModelStore();
-
-  const handleClick = () => {
-    setContent(lungData);
-  };
 
   useEffect(() => {
     if (actions) {
@@ -82,17 +71,26 @@ export function Lung(props) {
           />
         </group>
       </group>
-      <Html
-        position={[1, 1, 0]}
-        occlude="blending"
-        transform
-        geometry={<circleGeometry args={[0.2, 32]} />}
-        onClick={handleClick}
-      >
-        <div className=" ">
-          <Info size={15} />
-        </div>
-      </Html>
+      <Annotation
+        position={[0, 5, 0.6]}
+        categoryIndex={0}
+        categories={lungCategories}
+      />
+      <Annotation
+        position={[1.6, 3, 0]}
+        categoryIndex={1}
+        categories={lungCategories}
+      />
+      <Annotation
+        position={[-1.6, 3, 0]}
+        categoryIndex={2}
+        categories={lungCategories}
+      />
+      <Annotation
+        position={[-2, 0, 0]}
+        categoryIndex={3}
+        categories={lungCategories}
+      />
     </>
   );
 }

@@ -1,12 +1,10 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AnimatedLink from "./AnimatedLink";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { IoIosArrowDown } from "react-icons/io";
-import MobileNav from "./MobileNav";
 import NavLink from "./NavLink";
 
 export default function Navbar() {
@@ -39,8 +37,9 @@ export default function Navbar() {
       }`}
     >
       <nav className="hidden md:flex items-center justify-between p-4">
-        <div className="w-22 h-22 object-cover">
+        <div className="w-22 h-22 object-cover flex flex-col">
           <Image src="/img/technical.png" width={100} height={100} alt="logo" />
+          <Image src="/img/health.svg" width={100} height={100} alt="logo" />
         </div>
         <div className="flex items-center gap-8">
           <ul className="flex gap-8 font-manrope font-semibold tracking-wide ">
@@ -48,7 +47,7 @@ export default function Navbar() {
             <NavLink href="/about">About</NavLink>
             <NavLink href="/contact">Contact</NavLink>
           </ul>
-          <button className="border border-text rounded-full text-sm px-4 py-2 hover:bg-text hover:text-secondary transition-all duration-300 ease-in-out">
+          <button className="border border-text rounded-full text-sm px-4 py-2 hover:bg-black hover:text-secondary transition-all duration-300 ease-in-out">
             <AnimatedLink title={"GET IN TOUCH"} />
           </button>
         </div>

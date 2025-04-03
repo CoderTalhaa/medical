@@ -2,7 +2,12 @@ import useModelStore from "@/store/useStore";
 import { Html } from "@react-three/drei";
 import { Info } from "lucide-react";
 
-export default function Annotation({ position, categoryIndex, categories }) {
+export default function Annotation({
+  position,
+  rotation = [0, 0, 0],
+  categoryIndex,
+  categories,
+}) {
   const { setContent } = useModelStore();
 
   const handleClick = () => {
@@ -15,6 +20,7 @@ export default function Annotation({ position, categoryIndex, categories }) {
     <>
       <Html
         position={position}
+        rotation={rotation}
         occlude="blending"
         transform
         geometry={<circleGeometry args={[0.15, 32]} />}

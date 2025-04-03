@@ -1,12 +1,7 @@
 import React, { useEffect, useRef } from "react";
-import { useGLTF, useAnimations, Html } from "@react-three/drei";
-import { heartData } from "@/data/heartData.js";
-import useModelStore from "@/store/useStore";
-import { Info } from "lucide-react";
-import { extend } from "@react-three/fiber";
-import { geometry } from "maath";
-
-extend(geometry);
+import { useGLTF, useAnimations } from "@react-three/drei";
+import Annotation from "../Annotation";
+import { heartCategories } from "@/data/heartData";
 
 export function Heart(props) {
   const group = useRef();
@@ -14,12 +9,6 @@ export function Heart(props) {
     "/models/AnimHeart_optimized.glb"
   );
   const { actions } = useAnimations(animations, group);
-
-  const { setContent } = useModelStore();
-
-  const handleClick = () => {
-    setContent(heartData);
-  };
 
   useEffect(() => {
     if (actions) {
@@ -93,17 +82,26 @@ export function Heart(props) {
           />
         </group>
       </group>
-      <Html
-        position={[0, 1, 0]}
-        occlude="blending"
-        transform
-        geometry={<circleGeometry args={[0.2, 32]} />}
-        onClick={handleClick}
-      >
-        <div className=" ">
-          <Info size={15} />
-        </div>
-      </Html>
+      <Annotation
+        position={[0, 5, 0]}
+        categoryIndex={0}
+        categories={heartCategories}
+      />
+      <Annotation
+        position={[1.6, 3, 0]}
+        categoryIndex={1}
+        categories={heartCategories}
+      />
+      <Annotation
+        position={[-2.4, 3, 0]}
+        categoryIndex={2}
+        categories={heartCategories}
+      />
+      <Annotation
+        position={[0, 0.3, 1.7]}
+        categoryIndex={3}
+        categories={heartCategories}
+      />
     </>
   );
 }

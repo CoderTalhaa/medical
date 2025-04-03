@@ -9,18 +9,18 @@ import { NeuronParticles } from "./model/NeuronParticles";
 
 export default function Exp() {
   const modelPositions = {
-    brain: [15, -1, 0],
-    heart: [5, 0, 15],
-    lung: [-15, 0.5, 10],
-    blood: [5, 0, -35],
+    brain: [20, 1.4, -3],
+    heart: [1, 0, 20],
+    lung: [-20, 0.5, 10],
+    blood: [-10, 0.3, -20],
   };
 
   const organPositions = [
-    [15, 1, 0], // Brain
-    [5, 1, 15], // Heart
-    [-15, 1, 10], // Lung
-    [-12, 1, -10], // Female
-    [5, 1, -35], // Blood
+    [1, 1, 20], // Heart
+    [20, 1, -3], // Brain
+    [-20, 1, 10], // Lung
+    [10, 1, -20], // Female
+    [-10, 1, -20], // Blood
   ];
 
   const { updateSound } = useAudio(modelPositions);
@@ -33,24 +33,20 @@ export default function Exp() {
     <>
       <NeuronParticles positions={organPositions} />
 
-      <group position={modelPositions.brain}>
-        <Brain scale={5} />
+      <group position={modelPositions.brain} rotation={[0, -0.4, 0]}>
+        <Brain scale={4} />
       </group>
       <group position={modelPositions.heart}>
         <Heart scale={1.7} />
       </group>
-      <group position={modelPositions.lung} scale={1}>
-        <Lung />
+      <group position={modelPositions.lung} rotation={[0, 0.5, 0]}>
+        <Lung scale={1.3} />
       </group>
-      <group position={[-12, 1, -10]} scale={1.5}>
-        <Female />
+      <group position={[10, 1, -20]}>
+        <Female scale={2} />
       </group>
-      <group
-        position={modelPositions.blood}
-        rotation={[0, Math.PI / 1.7, 0]}
-        scale={1}
-      >
-        <Blood />
+      <group position={modelPositions.blood} rotation={[0, 1.1, 0]}>
+        <Blood scale={0.7} />
       </group>
     </>
   );

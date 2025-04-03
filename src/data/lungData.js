@@ -1,4 +1,7 @@
-export const lungData = [
+// src/data/lungData.js
+
+// Main Sponsor Category
+const mainSponsor = [
   {
     category: "Main Sponsor",
     items: [
@@ -6,10 +9,14 @@ export const lungData = [
         name: "Gebro Pharma",
         img: "/img/gebra.png",
         description:
-          "A Spanish pharmaceutical company specializing in the development and commercialization of treatments across various therapeutic areas, including pain management, respiratory conditions, autoimmune diseases, and urogynecology. The companys focus on respiratory diseases aligns with its commitment to improving patient outcomes in lung-related health.",
+          "A Spanish pharmaceutical company specializing in the development and commercialization of treatments across various therapeutic areas, including pain management, respiratory conditions, autoimmune diseases, and urogynecology. The company's focus on respiratory diseases aligns with its commitment to improving patient outcomes in lung-related health.",
       },
     ],
   },
+];
+
+// Supporting Stakeholders Category
+const supportingStakeholders = [
   {
     category: "Supporting Stakeholders",
     subcategories: [
@@ -165,13 +172,27 @@ export const lungData = [
       },
     ],
   },
+];
+
+// Panel Discussion Category
+const panelDiscussion = [
   {
     category: "Panel Discussion",
     title:
       "Medicine in the Post-Pandemic Era: How the Pandemic Accelerated Innovation and Shaped Healthcare in Respiratory Health",
     description:
       "This panel will discuss how the COVID-19 pandemic catalyzed rapid innovation in respiratory healthcare, including advancements in diagnostics, treatments, and patient management. Topics will cover the accelerated development of vaccines, digital health technologies, and telemedicine, and how these innovations are now being applied in the management of respiratory diseases and other chronic conditions.",
+    panelists: [
+      "César Velasco, Science & Innovation Director, AstraZeneca Barcelona",
+      "Beatriz Arriaga, CFO, Teladoc",
+      "Frank Manning, Director, RQMIS",
+      "Leire Jiménez Ayesa, Chief Innovation Officer, MAPFRE",
+    ],
   },
+];
+
+// Open Innovation Challenges Category
+const openInnovationChallenges = [
   {
     category: "Open Innovation Challenges",
     items: [
@@ -194,5 +215,15 @@ export const lungData = [
           "This challenge aims to improve home care for the elderly and dependent individuals by creating a coordinated network of home service providers and health professionals. The platform will enhance communication and enable better monitoring, reducing hospitalizations and delays in institutional care.",
       },
     ],
+    description:
+      "Think you have a solution? Innovate and be part of the revolution!",
   },
 ];
+
+// Export all categories in an object
+export const lungCategories = {
+  mainSponsor,
+  supportingStakeholders,
+  panelDiscussion,
+  openInnovationChallenges,
+};

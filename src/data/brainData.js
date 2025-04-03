@@ -211,6 +211,12 @@ const panelDiscussion = [
       "Next-Generation Neurotechnology: BCI, Wearables, and AI Accelerating Personalized Care in Neuroscience",
     description:
       "This panel will explore how emerging technologies, such as Brain-Computer Interfaces (BCIs), wearable devices, and Artificial Intelligence (AI), are transforming personalized care in neuroscience. The discussion will highlight advancements in diagnosis, treatment, and patient outcomes, demonstrating the potential for these technologies to revolutionize the field.",
+    panelists: [
+      "Carolina Aguilar, CEO & Co-Founder, InBrain Neuroelectronics",
+      "Nora Sales, Manager, Science for Change",
+      "César Morcillo, Medical Director, Sanitas",
+      "Alfonso Alcalá-Galiano, Head of Strategy & Transformation, Siemens Healthineers",
+    ],
   },
 ];
 
@@ -238,6 +244,8 @@ const openInnovationChallenges = [
           "This challenge aims to create an app-based system that integrates real-time patient data, personalized health recommendations, and AI-driven insights.",
       },
     ],
+    description:
+      "Think you have a solution? Innovate and be part of the revolution!",
   },
 ];
 

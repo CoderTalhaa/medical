@@ -52,26 +52,33 @@ export default function Overlay() {
                   </h2>
                   <div className="text-lg md:text-xl text-left drop-shadow-sm">
                     {content[0].items ? (
-                      <ol className="list-inside space-y-3">
-                        {content[0].items.map((item, i) => (
-                          <li key={i} className="flex flex-col gap-2">
-                            {item.img && (
-                              <div className="w-44 scale-110 pb-5">
-                                <Image
-                                  alt="logo"
-                                  src={item.img}
-                                  width={1000}
-                                  height={1000}
-                                />
-                              </div>
-                            )}
-                            <strong className="text-teal-300 font-headings font-semibold text-2xl">
-                              {item.name}:
-                            </strong>
-                            <p className="font-text">{item.description}</p>
-                          </li>
-                        ))}
-                      </ol>
+                      <>
+                        <ol className="list-inside space-y-3">
+                          {content[0].items.map((item, i) => (
+                            <li key={i} className="flex flex-col gap-2">
+                              {item.img && (
+                                <div className="w-44 scale-110 pb-5">
+                                  <Image
+                                    alt="logo"
+                                    src={item.img}
+                                    width={1000}
+                                    height={1000}
+                                  />
+                                </div>
+                              )}
+                              <strong className="text-teal-300 font-headings font-semibold text-2xl">
+                                {item.name}:
+                              </strong>
+                              <p className="font-text">{item.description}</p>
+                            </li>
+                          ))}
+                        </ol>
+                        {content[0].description && (
+                          <p className="font-text mt-4 italic text-teal-200">
+                            {content[0].description}
+                          </p>
+                        )}
+                      </>
                     ) : content[0].subcategories ? (
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {content[0].subcategories.map((subcat, j) => (
@@ -98,7 +105,28 @@ export default function Overlay() {
                         ))}
                       </div>
                     ) : (
-                      <p className="font-text">{content[0].description}</p>
+                      <>
+                        {content[0].title && (
+                          <h3 className="text-2xl md:text-3xl font-headings font-semibold mb-4 text-teal-300">
+                            {content[0].title}
+                          </h3>
+                        )}
+                        <p className="font-text">{content[0].description}</p>
+                        {content[0].panelists && (
+                          <div className="mt-4">
+                            <h4 className="text-xl font-semibold text-purple-300 mb-2">
+                              Panelists:
+                            </h4>
+                            <ul className="list-disc list-inside space-y-1">
+                              {content[0].panelists.map((panelist, i) => (
+                                <li key={i} className="font-text">
+                                  {panelist}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </>
                     )}
                   </div>
                 </div>

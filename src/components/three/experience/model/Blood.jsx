@@ -1,19 +1,12 @@
 import React, { useRef } from "react";
-import { Html, useGLTF } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import useModelStore from "@/store/useStore";
-import { Info } from "lucide-react";
-import { bloodData } from "@/data/bloodData.js";
+import Annotation from "../Annotation";
+import { bloodCategories } from "@/data/bloodData";
 
 export function Blood(props) {
   const { nodes, materials } = useGLTF("/models/steam.glb");
   const bloodRefs = useRef([]);
-
-  const { setContent } = useModelStore();
-
-  const handleClick = () => {
-    setContent(bloodData);
-  };
 
   useFrame(() => {
     bloodRefs.current.forEach((ref) => {
@@ -50,18 +43,30 @@ export function Blood(props) {
           return null;
         })}
       </group>
-      <Html
-        position={[0.919, 2.049, -3.797]}
-        rotation={[0, 1, 0]}
-        occlude="blending"
-        transform
-        geometry={<circleGeometry args={[0.2, 32]} />}
-        onClick={handleClick}
-      >
-        <div className=" ">
-          <Info size={15} />
-        </div>
-      </Html>
+      <Annotation
+        rotation={[0, 1.5, 0]}
+        position={[-12.5, 3, -2.5]}
+        categoryIndex={0}
+        categories={bloodCategories}
+      />
+      <Annotation
+        rotation={[0, 1.5, 0]}
+        position={[-6, 1.2, -2.5]}
+        categoryIndex={1}
+        categories={bloodCategories}
+      />
+      <Annotation
+        rotation={[0, 1.5, 0]}
+        position={[1, 1.6, -2.5]}
+        categoryIndex={2}
+        categories={bloodCategories}
+      />
+      <Annotation
+        rotation={[0, 1.5, 0]}
+        position={[10, 1, -2.5]}
+        categoryIndex={3}
+        categories={bloodCategories}
+      />
     </>
   );
 }

@@ -41,7 +41,6 @@ export default function RootLayout({ children }) {
       <body
         className={`${montserrat.variable} ${inter.variable} ${manrope.variable} ${bungee.variable} antialiased text-text2 bg-black`}
       >
-        {/* <Cursor /> */}
         <Navbar />
         {children}
       </body>

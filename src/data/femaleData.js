@@ -1,15 +1,22 @@
-export const femaleData = [
+// src/data/femaleData.js
+
+// Main Sponsor Category
+const mainSponsor = [
   {
-    category: "Main Sponsor (TBC)",
+    category: "Main Sponsor",
     items: [
       {
         name: "Bayer",
         img: "/img/bayer.png",
         description:
-          "A leading life sciences company that focuses on healthcare and agriculture. Bayer is committed to advancing reproductive health, hormonal therapies, and fertility solutions for women. The company develops scientifically backed treatments to improve the quality of life for women, focusing on accessible and innovative healthcare solutions in the female reproductive system and overall womens health.",
+          "A leading life sciences company that focuses on healthcare and agriculture. Bayer is committed to advancing reproductive health, hormonal therapies, and fertility solutions for women. The company develops scientifically backed treatments to improve the quality of life for women, focusing on accessible and innovative healthcare solutions in the female reproductive system and overall women's health.",
       },
     ],
   },
+];
+
+// Supporting Stakeholders Category
+const supportingStakeholders = [
   {
     category: "Supporting Stakeholders",
     subcategories: [
@@ -140,13 +147,27 @@ export const femaleData = [
       },
     ],
   },
+];
+
+// Panel Discussion Category
+const panelDiscussion = [
   {
     category: "Panel Discussion",
     title:
       "Bridging the Gender Health Gap: Advancing Female-Specific Solutions to Disease",
     description:
       "This panel will explore the gender disparities in healthcare, focusing on the unique health challenges women face. Experts will discuss the need for tailored solutions in disease prevention, diagnosis, and treatment, emphasizing the role of research, innovation, and policy reform to bridge the health gap and improve outcomes for women.",
+    panelists: [
+      "Eva Vila-Massanas, Co-Founder, Juno House",
+      "Agnes Arbat, CEO & Co-Founder, Oxolife",
+      "Joan Ruis Tarruella, Medical Advisor, Women's Health",
+      "Michelle Commane, Head of Business Expansion Strategy, Alexion (AstraZeneca)",
+    ],
   },
+];
+
+// Open Innovation Challenges Category
+const openInnovationChallenges = [
   {
     category: "Open Innovation Challenges",
     items: [
@@ -154,8 +175,18 @@ export const femaleData = [
         name: "Enhancing Access to Essential Medicines",
         challengeOwner: "Reig Jofre",
         description:
-          "Reig Jofre is dedicated to enhancing access to essential medicines for women’s health by developing a digital solution that prevents supply disruptions and optimizes procurement processes. This challenge seeks partners who can leverage data analytics and automation to drive smarter procurement decisions, ensuring that essential medicines, particularly in reproductive health, are available and accessible to patients in a timely manner.",
+          "Reig Jofre is dedicated to enhancing access to essential medicines for women's health by developing a digital solution that prevents supply disruptions and optimizes procurement processes. This challenge seeks partners who can leverage data analytics and automation to drive smarter procurement decisions, ensuring that essential medicines, particularly in reproductive health, are available and accessible to patients in a timely manner.",
       },
     ],
+    description:
+      "Think you have a solution? Innovate and be part of the revolution!",
   },
 ];
+
+// Export all categories in an object
+export const femaleCategories = {
+  mainSponsor,
+  supportingStakeholders,
+  panelDiscussion,
+  openInnovationChallenges,
+};

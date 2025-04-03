@@ -1,12 +1,9 @@
 "use client";
 import {
   Environment,
-  Grid,
   KeyboardControls,
   Loader,
-  OrbitControls,
   PointerLockControls,
-  Stars,
 } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useMemo, useRef } from "react";
@@ -34,6 +31,11 @@ export default function Scene({ showWelcome }) {
     if (content) {
       console.log("Unlocking pointer...");
       pointerLockControlsRef.current.unlock();
+
+      // Forcefully exit pointer lock
+      if (document.pointerLockElement) {
+        document.exitPointerLock();
+      }
     } else {
       pointerLockControlsRef.current.lock();
     }
@@ -62,17 +64,8 @@ export default function Scene({ showWelcome }) {
         >
           <Background />
           <SkyBillboard />
-          <Stars
-            radius={100}
-            depth={50}
-            count={1000}
-            factor={4}
-            saturation={0}
-            fade
-            speed={1}
-          />
+
           <color attach="background" args={["#15151a"]} />
-          <fog attach="fog" args={["#0a0a0a", 10, 60]} />
 
           <Suspense fallback={null}>
             <Physics>
@@ -82,7 +75,6 @@ export default function Scene({ showWelcome }) {
             </Physics>
           </Suspense>
 
-          {/* <Grid infiniteGrid={true} /> */}
           <ambientLight intensity={0.5} />
           <Environment preset="city" />
           {!showWelcome && !content && (

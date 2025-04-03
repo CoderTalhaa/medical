@@ -1,16 +1,10 @@
-import React, { useRef } from "react";
-import { Html, useGLTF } from "@react-three/drei";
-import useModelStore from "@/store/useStore";
-import { Info } from "lucide-react";
-import { femaleData } from "@/data/femaleData.js";
+import { useGLTF } from "@react-three/drei";
+import Annotation from "../Annotation";
+import { femaleCategories } from "@/data/femaleData";
 
 export function Female(props) {
   const { nodes, materials } = useGLTF("/models/female.glb");
-  const { setContent } = useModelStore();
 
-  const handleClick = () => {
-    setContent(femaleData);
-  };
   return (
     <>
       <group {...props} dispose={null}>
@@ -23,17 +17,27 @@ export function Female(props) {
           scale={1.201}
         />
       </group>
-      <Html
-        position={[0, 1.5, 0]}
-        occlude="blending"
-        transform
-        geometry={<circleGeometry args={[0.2, 32]} />}
-        onClick={handleClick}
-      >
-        <div className=" ">
-          <Info size={15} />
-        </div>
-      </Html>
+
+      <Annotation
+        position={[0, 3, 0]}
+        categoryIndex={0}
+        categories={femaleCategories}
+      />
+      <Annotation
+        position={[2, 2, 0.5]}
+        categoryIndex={1}
+        categories={femaleCategories}
+      />
+      <Annotation
+        position={[-2, 2, 0.5]}
+        categoryIndex={2}
+        categories={femaleCategories}
+      />
+      <Annotation
+        position={[0, -0.5, 0.6]}
+        categoryIndex={3}
+        categories={femaleCategories}
+      />
     </>
   );
 }

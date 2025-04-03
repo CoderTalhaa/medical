@@ -26,7 +26,7 @@ export function Player() {
       // Reset velocity to prevent falling immediately
       rigidBodyRef.current.setLinvel({ x: 0, y: 0, z: 0 }, true);
       // Set camera to look straight ahead (along Z-axis)
-      state.camera.rotation.set(0, 0, 0); // X=0 (pitch), Y=0 (yaw), Z=0 (roll)
+      state.camera.rotation.set(0.4, 0, 0); // X=0 (pitch), Y=0 (yaw), Z=0 (roll)
       setIsInitialized(true);
     }
 
@@ -55,7 +55,7 @@ export function Player() {
       colliders={false}
       mass={1}
       type="dynamic"
-      position={[-8, 2, 30]}
+      position={[-1, 10, 40]}
       enabledRotations={[false, false, false]}
     >
       <CapsuleCollider args={[0.5, 0.5]} />

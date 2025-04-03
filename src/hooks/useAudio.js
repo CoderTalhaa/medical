@@ -1,102 +1,103 @@
-// src/hooks/useAudio.js
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Howl } from "howler";
 
-export default function useAudio(modelPositions) {
+const DEFAULT_MODEL_POSITIONS = {
+  brain: [20, 1.4, -3],
+  heart: [1, 0, 20],
+  lung: [-20, 0.5, 10],
+  blood: [-10, 0.3, -20],
+};
+
+export default function useAudio(modelPositions = DEFAULT_MODEL_POSITIONS) {
   const [sounds, setSounds] = useState({});
   const [isMuted, setIsMuted] = useState(false);
 
-  // Initialize sounds
+  // Initialize sounds with custom base volumes (adjust these as needed)
   useEffect(() => {
     const backgroundSound = new Howl({
       src: ["/audio/background2.mp3"],
       loop: true,
-      volume: 0.01,
+      volume: 0.01, // Very quiet background
     });
 
+    // Adjust these base volumes per sound (0-1)
     const modelSounds = {
-      brain: new Howl({ src: ["/audio/brain.mp3"], volume: 0 }),
-      heart: new Howl({ src: ["/audio/heart.mp3"], volume: 0 }),
-      lung: new Howl({ src: ["/audio/lung.mp3"], volume: 50 }),
-      blood: new Howl({ src: ["/audio/blood.mp3"], volume: 10 }),
+      brain: new Howl({ src: ["/audio/brain.mp3"], volume: 0.01 }),
+      heart: new Howl({ src: ["/audio/heart.mp3"], volume: 1 }),
+      lung: new Howl({ src: ["/audio/lung.mp3"], volume: 1 }),
+      blood: new Howl({ src: ["/audio/blood.mp3"], volume: 1 }),
     };
 
     backgroundSound.play();
     setSounds({ background: backgroundSound, ...modelSounds });
 
-    // Handle tab visibility
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        backgroundSound.pause();
-        Object.values(modelSounds).forEach((sound) => sound.pause());
-      } else if (!isMuted) {
-        backgroundSound.play();
-        // Model sounds will resume via updateSound if near a model
+        Howler.mute(true); // Mute all sounds when tab is inactive
+      } else {
+        Howler.mute(isMuted); // Restore mute state when tab is active
       }
     };
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
-    // Cleanup
     return () => {
+      Howler.mute(false); // Unmute before cleanup
       backgroundSound.stop();
       Object.values(modelSounds).forEach((sound) => sound.stop());
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, []); // Removed isMuted dependency
+  }, []);
 
   // Update sound based on camera position
-  const updateSound = (camera) => {
-    if (!camera || !sounds.background) return;
+  const updateSound = useCallback(
+    (camera) => {
+      if (!camera || !sounds.background) return;
 
-    const cameraPos = camera.position;
-    let isNearModel = false;
+      const cameraPos = camera.position;
+      let isNearModel = false;
 
-    Object.keys(modelPositions).forEach((model) => {
-      const modelPos = modelPositions[model];
-      const distance = cameraPos.distanceTo({
-        x: modelPos[0],
-        y: modelPos[1],
-        z: modelPos[2],
+      Object.entries(modelPositions).forEach(([model, pos]) => {
+        const sound = sounds[model];
+        if (!sound) return;
+
+        const dx = cameraPos.x - pos[0];
+        const dy = cameraPos.y - pos[1];
+        const dz = cameraPos.z - pos[2];
+        const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+        const threshold = 15;
+        if (distance < threshold) {
+          isNearModel = true;
+          if (!sound.playing() && !isMuted) sound.play();
+
+          // Scale volume dynamically (0.1 to 1)
+          const volume = Math.min(1, 0.1 + 0.9 * (1 - distance / threshold));
+          sound.volume(isMuted ? 0 : volume);
+
+          // Lower background when near a model
+          sounds.background.volume(isMuted ? 0 : 0.001);
+        } else {
+          sound.volume(0);
+          if (sound.playing()) sound.stop();
+        }
       });
 
-      const threshold = 15;
-      const sound = sounds[model];
-
-      if (distance < threshold) {
-        isNearModel = true;
-        if (sound) {
-          if (!sound.playing() && !isMuted) sound.play();
-          // Adjusted volume: scales from 0.3 to 1 based on distance
-          sound.volume(
-            isMuted ? 0 : Math.min(1, 0.1 + 0.9 * (1 - distance / threshold))
-          );
-        }
-        sounds.background.volume(isMuted ? 0 : 0);
-      } else if (sound) {
-        sound.volume(0);
-        if (sound.playing()) sound.stop();
+      if (!isNearModel) {
+        sounds.background.volume(isMuted ? 0 : 0.01); // Restore background volume
       }
-    });
+    },
+    [sounds, isMuted, modelPositions]
+  );
 
-    if (!isNearModel) {
-      sounds.background.volume(isMuted ? 0 : 0.01);
-    }
-  };
-
-  // Toggle mute/unmute
-  const toggleMute = () => {
+  // Toggle mute/unmute (now uses Howler.mute for complete silence)
+  const toggleMute = useCallback(() => {
     setIsMuted((prev) => {
       const newMuted = !prev;
-      if (newMuted) {
-        Object.values(sounds).forEach((sound) => sound.pause());
-      } else if (!document.hidden) {
-        sounds.background.play();
-        // Model sounds will resume via updateSound if near a model
-      }
+      Howler.mute(newMuted); // This mutes ALL sounds globally
       return newMuted;
     });
-  };
+  }, []);
 
   return { updateSound, toggleMute, isMuted };
 }

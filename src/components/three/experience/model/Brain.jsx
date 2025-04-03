@@ -17,22 +17,22 @@ export function Brain(props) {
         />
       </group>
       <Annotation
-        position={[0, 5, -3]}
+        position={[0, 4, 6]}
         categoryIndex={0}
         categories={brainCategories}
       />
       <Annotation
-        position={[2, 3, -3]}
+        position={[2, 1, -3.3]}
         categoryIndex={1}
         categories={brainCategories}
       />
       <Annotation
-        position={[-2, 3, -3]}
+        position={[-1.8, 1, -3.3]}
         categoryIndex={2}
         categories={brainCategories}
       />
       <Annotation
-        position={[0, 2, -3]}
+        position={[0, 1.5, -3.3]}
         categoryIndex={3}
         categories={brainCategories}
       />
