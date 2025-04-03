@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import useModelStore from "@/store/useStore";
 import { Html } from "@react-three/drei";
 import { Star, Users, Pyramid, Puzzle } from "lucide-react";
@@ -18,10 +17,10 @@ export default function Annotation({
   };
 
   const icons = [
-    <Star size={12} />,
-    <Pyramid size={12} />,
-    <Users size={12} />,
-    <Puzzle size={12} />,
+    <Star size={12} key={categoryIndex[0]} />,
+    <Pyramid size={12} key={categoryIndex[1]} />,
+    <Users size={12} key={categoryIndex[2]} />,
+    <Puzzle size={12} key={categoryIndex[3]} />,
   ];
 
   return (
