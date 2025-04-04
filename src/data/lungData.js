@@ -39,7 +39,7 @@ const supportingStakeholders = [
             name: "Hyfe",
             description:
               "Uses Acoustic AI to detect and classify coughs, aiding in the diagnosis of respiratory conditions by analyzing coughing patterns and their relationship to specific diseases.",
-            img: "/lung/Hyfe.png",
+            img: "/lung/hyfe.png",
           },
           {
             name: "HumanITcare",

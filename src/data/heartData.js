@@ -27,7 +27,7 @@ const supportingStakeholders = [
             name: "Idoven",
             description:
               "A healthtech startup using AI to revolutionize the early detection and prevention of cardiovascular diseases. The company’s AI-driven solutions help diagnose heart conditions more accurately and efficiently, improving patient outcomes.",
-            img: "/heart/idoven.png",
+            img: "/heart/doven.jpg",
           },
           {
             name: "Embioth Fetal Care",
