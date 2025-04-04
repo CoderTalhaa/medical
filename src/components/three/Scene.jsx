@@ -26,22 +26,6 @@ export default function Scene({ showWelcome }) {
   const { content } = useModelStore();
   const pointerLockControlsRef = useRef();
 
-  useEffect(() => {
-    if (!pointerLockControlsRef.current) return;
-
-    if (content) {
-      console.log("Unlocking pointer...");
-      pointerLockControlsRef.current.unlock();
-
-      // Forcefully exit pointer lock
-      if (document.pointerLockElement) {
-        document.exitPointerLock();
-      }
-    } else {
-      pointerLockControlsRef.current.lock();
-    }
-  }, [content]);
-
   const map = useMemo(
     () => [
       { name: Controls.forward, keys: ["ArrowUp", "KeyW"] },

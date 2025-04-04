@@ -27,46 +27,55 @@ const supportingStakeholders = [
             name: "Flomics",
             description:
               "Specializes in bioinformatics and molecular profiling to enable early detection and precision treatment of blood-related cancers, particularly in oncology. Their platform aids in identifying specific biomarkers for personalized blood cancer therapies.",
+            img: "/blood/Flomics.png",
           },
           {
             name: "Loop Diagnostics",
             description:
               "A diagnostic startup focusing on the early detection and monitoring of blood disorders, including hematological malignancies, through innovative, non-invasive blood tests.",
+            img: "/blood/Loop.png",
           },
           {
             name: "NIVD",
             description:
               "Developing technologies for the diagnosis and monitoring of immunological and blood-related diseases, including advanced plasma diagnostics and testing solutions.",
+            img: "/blood/NIVD.png",
           },
           {
             name: "MiWEndo Solutions",
             description:
               "A health tech company focusing on early diagnosis and treatment of blood cancers and other related disorders, utilizing a unique combination of imaging and blood-based biomarkers.",
+            img: "/blood/MiWEndo.jpeg",
           },
           {
             name: "Sycai",
             description:
               "A startup offering AI-driven platforms to enhance the prediction, diagnosis, and treatment of blood-related diseases, including hematological malignancies and immunological disorders.",
+            img: "/blood/Sycai.png",
           },
           {
             name: "IntelVasc Inc.",
             description:
               "Specializes in advanced diagnostics and medical devices that utilize blood biomarkers to diagnose cardiovascular and blood-related diseases at an early stage.",
+            img: "/blood/IntelVasc.jpeg",
           },
           {
             name: "IOMED",
             description:
               "A health technology company focused on medical data integration to improve treatment strategies for blood cancers and immunological disorders, using advanced data analytics to personalize patient care.",
+            img: "/blood/IOMED.png",
           },
           {
             name: "Doctomatic",
             description:
               "An AI-driven health platform focusing on personalized medicine for blood disorders, offering diagnostic solutions for blood cancers, immunology, and transfusion-related diseases.",
+            img: "/blood/Doctomatic.png",
           },
           {
             name: "DevsHealth",
             description:
               "A healthtech company dedicated to providing data-driven insights for the management of blood and plasma-based medical treatments, with an emphasis on optimizing blood donation processes and improving patient outcomes in hematology.",
+            img: "/blood/DevsHealth.png",
           },
         ],
       },
@@ -77,16 +86,19 @@ const supportingStakeholders = [
             name: "B. Braun",
             description:
               "A global medical and pharmaceutical company, focusing on innovative solutions in blood-related treatments, including transfusion medicine, plasma-derived therapies, and oncology.",
+            img: "/blood/Braun.png",
           },
           {
             name: "Johnson & Johnson",
             description:
               "A leading pharmaceutical company with a wide range of therapies, including treatments for blood cancers, immunology, and plasma-derived biopharmaceuticals.",
+            img: "/blood/Johnson.png",
           },
           {
             name: "Novo Nordisk",
             description:
               "A global healthcare leader focusing on treatments for blood-related conditions, such as hemophilia and diabetes, and advancing immunology therapies for autoimmune diseases.",
+            img: "/blood/Novo.png",
           },
         ],
       },
@@ -97,16 +109,19 @@ const supportingStakeholders = [
             name: "Hospital del Mar",
             description:
               "A major hospital in Barcelona, specializing in the treatment of blood-related diseases, including hematological cancers and transfusion therapies.",
+            img: "/blood/HospitalD.png",
           },
           {
             name: "Vall d’Hebron",
             description:
               "A leading research hospital in Barcelona, renowned for its expertise in hematology, immunology, and plasma-derived treatments for blood cancers and immune disorders.",
+            img: "/blood/Vall.png",
           },
           {
             name: "Hospitales Quirón Salud",
             description:
               "A network of hospitals that focuses on advanced treatments for blood and plasma-related disorders, including oncology and immunology care.",
+            img: "/blood/Hospitales.jpeg",
           },
         ],
       },
@@ -117,21 +132,25 @@ const supportingStakeholders = [
             name: "Bioinformatics Barcelona",
             description:
               "A research institute specializing in bioinformatics and computational tools for the study and treatment of blood diseases, including precision oncology and immunology.",
+            img: "/blood/Bioinformatics.jpeg",
           },
           {
             name: "Institut de Recerca Barcelona",
             description:
               "A leading research institute in Barcelona, conducting cutting-edge studies on blood cancers, plasma-derived treatments, and immunological disorders.",
+            img: "/blood/idrb.jpeg",
           },
           {
             name: "Catalan Institute of Nanoscience and Nanotechnology",
             description:
               "An institute focused on advancing nanotechnology to improve blood disease diagnostics and treatment, particularly in oncology and immunology.",
+            img: "/blood/icn2.png",
           },
           {
             name: "Spanish National Research Council (CSIC)",
             description:
               "A leading Spanish research institution conducting research into blood-related diseases, with a focus on immunology, blood cancers, and plasma science.",
+            img: "/blood/csic.png",
           },
         ],
       },
@@ -142,16 +161,19 @@ const supportingStakeholders = [
             name: "Ysios Capital",
             description:
               "A venture capital firm focused on investing in innovative healthtech companies, particularly those developing novel treatments for blood diseases, including plasma-derived therapies and blood cancer treatments.",
+            img: "/blood/Ysios.png",
           },
           {
             name: "Sabadell Venture Capital",
             description:
               "An investor specializing in early-stage healthtech startups, supporting companies focused on blood-related therapies, oncology, and immunology.",
+            img: "/blood/Sabadell.png",
           },
           {
             name: "Nauta Capital",
             description:
               "A venture capital firm supporting innovative startups in healthtech, with an interest in blood-related diagnostics, immunology, and plasma therapies.",
+            img: "/blood/Nauta.png",
           },
         ],
       },

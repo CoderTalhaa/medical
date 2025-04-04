@@ -27,21 +27,25 @@ const supportingStakeholders = [
             name: "Aqsitania",
             description:
               "Innovates in respiratory medicine by analyzing tidal breathing airflow signals to create a personalized breathing signature, offering effective solutions for diagnosing, monitoring, and telemonitoring respiratory diseases like asthma, COPD, and cystic fibrosis.",
+            img: "/lung/Aqsitania.png",
           },
           {
             name: "UniWearables GmbH",
             description:
               "Develops an adhesive patch-worn clinical wearable that continuously monitors vital signs like heart rate, respiratory rate, oxygen saturation, skin temperature, and orientation. It provides real-time data to medical staff and caregivers for 24/7 patient monitoring.",
+            img: "/lung/UniWearables.png",
           },
           {
             name: "Hyfe",
             description:
               "Uses Acoustic AI to detect and classify coughs, aiding in the diagnosis of respiratory conditions by analyzing coughing patterns and their relationship to specific diseases.",
+            img: "/lung/Hyfe.png",
           },
           {
             name: "HumanITcare",
             description:
               "Collaborating with Gebro Pharma, HumanITcare is co-developing a connected health solution for asthma patients, aiming to enhance remote monitoring and personalized care.",
+            img: "/lung/HumanITcare.png",
           },
         ],
       },
@@ -52,16 +56,19 @@ const supportingStakeholders = [
             name: "AstraZeneca",
             description:
               "A global pharmaceutical leader focused on developing medicines primarily for respiratory diseases, including asthma and COPD, alongside therapies for oncology, cardiovascular, and renal conditions.",
+            img: "/lung/AstraZeneca.png",
           },
           {
             name: "Boehringer Ingelheim",
             description:
               "One of the top 20 pharmaceutical companies globally, working on breakthrough therapies for respiratory diseases, as well as oncology and immunology.",
+            img: "/lung/Boehringer.png",
           },
           {
             name: "Almirall",
             description:
               "Specializes in dermatology and respiratory diseases, including treatments for asthma and COPD, focusing on innovative therapeutic options for chronic respiratory conditions.",
+            img: "/lung/Almirall.png",
           },
         ],
       },
@@ -72,16 +79,19 @@ const supportingStakeholders = [
             name: "Mayo Clinic",
             description:
               "Renowned for its comprehensive care, Mayo Clinic provides specialized treatment for respiratory diseases, conducting cutting-edge research in lung health.",
+            img: "/lung/Mayo.png",
           },
           {
             name: "Hospital de Sant Pau",
             description:
               "A scientific foundation in Catalonia, dedicated to research in respiratory diseases, particularly in relation to biomedicine and public health.",
+            img: "/lung/Hospital.png",
           },
           {
             name: "Hospital German Trias i Pujol",
             description:
               "Offers advanced medical care and specialized services, including research on respiratory conditions like COPD and asthma.",
+            img: "/lung/pujol.jpeg",
           },
         ],
       },
@@ -92,11 +102,13 @@ const supportingStakeholders = [
             name: "University of Barcelona",
             description:
               "Spain’s leading public university, conducting extensive research in respiratory diseases and biomedicine.",
+            img: "/lung/UniversityB.png",
           },
           {
             name: "EIT Health",
             description:
               "A network of innovators that works with health startups, promoting digital health innovations and accelerating the development of respiratory disease solutions.",
+            img: "/lung/EIT.png",
           },
         ],
       },
@@ -107,6 +119,7 @@ const supportingStakeholders = [
             name: "BioCat",
             description:
               "A public-private foundation supporting the growth and international positioning of Catalonia’s life sciences and healthcare sector, fostering innovation in respiratory health.",
+            img: "/lung/BioCat.jpeg",
           },
         ],
       },
@@ -117,11 +130,13 @@ const supportingStakeholders = [
             name: "Lovexair Foundation",
             description:
               "Non-profit organization providing personalized respiratory care by connecting patients with healthcare professionals to support prevention, control, and self-care in respiratory diseases.",
+            img: "/lung/Lovexair.jpeg",
           },
           {
             name: "RightCare Foundation",
             description:
               "Focuses on improving patient care through the adoption of new technologies, particularly for underserved populations with respiratory conditions.",
+            img: "/lung/RightCare.jpeg",
           },
         ],
       },
@@ -132,21 +147,25 @@ const supportingStakeholders = [
             name: "CaixaBank",
             description:
               "Dayone is CaixaBank’s initiative to support and guide rapidly growing young businesses, particularly those innovating in healthcare and respiratory health.",
+            img: "/lung/CaixaBank.png",
           },
           {
             name: "CRB Health",
             description:
               "A venture capital firm investing in digital health companies, with a particular focus on respiratory technologies.",
+            img: "/lung/CRB.jpeg",
           },
           {
             name: "Ship2Ventures",
             description:
               "Invests in high-impact startups, including those focused on improving healthcare delivery for respiratory conditions.",
+            img: "/lung/Ship2Ventures.png",
           },
           {
             name: "Digital Pharma Lab",
             description:
               "An accelerator program for pharma companies and pharmatech startups, aiding innovation in respiratory treatments.",
+            img: "/lung/Digital.png",
           },
         ],
       },
@@ -157,11 +176,13 @@ const supportingStakeholders = [
             name: "Sanitas",
             description:
               "A comprehensive healthcare insurance provider offering health insurance plans, hospitals, medical centers, dental clinics, and elderly care, supporting individuals managing respiratory conditions.",
+            img: "/lung/Sanitas.png",
           },
           {
             name: "Occident",
             description:
               "A leading global insurance company, offering a variety of health and life insurance solutions, including for individuals with respiratory diseases.",
+            img: "/lung/Occident.png",
           },
         ],
       },
