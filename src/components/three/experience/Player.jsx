@@ -26,7 +26,7 @@ export function Player() {
       // Reset velocity to prevent falling immediately
       rigidBodyRef.current.setLinvel({ x: 0, y: 0, z: 0 }, true);
       // Set camera to look straight ahead (along Z-axis)
-      state.camera.rotation.set(0.4, 0, 0); // X=0 (pitch), Y=0 (yaw), Z=0 (roll)
+      state.camera.rotation.set(0.3, 0, 0); // X=0 (pitch), Y=0 (yaw), Z=0 (roll)
       setIsInitialized(true);
     }
 

@@ -58,7 +58,7 @@ export default function Overlay() {
                             <li key={i} className="flex flex-col gap-2">
                               <div className="flex justify-center items-center w-full">
                                 {item.img && (
-                                  <div className="w-60 pb-5">
+                                  <div className="w-80 pb-5">
                                     <Image
                                       alt="logo"
                                       src={item.img}

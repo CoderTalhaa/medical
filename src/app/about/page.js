@@ -1,18 +1,15 @@
-import Image from "next/image";
-
 export default function About() {
   return (
-    <div className="mt-32">
-      <div className="container">
-        <div className="w-full h-full">
-          <Image
+    <main className=" relative h-[130vh] bg-gradient-to-r from-[#374151] via-[#f43f5e] to-[#fb923c] ">
+      <div className="container pt-36">
+        <div className=" w-full h-full">
+          <img
             src={"/INFOGRAPHICS.jpg"}
-            width={1000}
-            height={1000}
-            alt="logo"
+            alt="INFOGRAPHIC"
+            className="h-full w-full object-cover scale-110"
           />
         </div>
       </div>
-    </div>
+    </main>
   );
 }
