@@ -98,11 +98,6 @@ const supportingStakeholders = [
             description:
               "A network of innovators that works with health startups, promoting digital health innovations and accelerating the development of respiratory disease solutions.",
           },
-          {
-            name: "Barcelonaβeta Brain Research Center",
-            description:
-              "Focuses on Alzheimer’s and neurodegenerative diseases but also conducts interdisciplinary research on respiratory impacts in brain health.",
-          },
         ],
       },
       {

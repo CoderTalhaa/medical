@@ -17,9 +17,9 @@ export default function Home() {
               Welcome to the Health Revolution Congress (The VR experience)!
             </h1>
             <p className="text-white font-text max-w-xl pb-10">
-              Step into a virtual journey through the Health Revolution Congress
+              Step into a virtual experience of the Health Revolution Congress
               and immerse yourself in an interactive exploration of the human
-              body. Navigate through the organs to the exciting sessions,
+              body. Navigate through the organs to reveal the exciting sessions,
               insightful discussions, innovative challenges, as well as the
               leading innovators and stakeholders that will shape the day.
             </p>

@@ -31,6 +31,13 @@ export default function Exp() {
 
   return (
     <>
+      {Array.from({ length: 10000 }).map((_, i) => (
+        <mesh key={i} position={[100, 100, 100]}>
+          <boxGeometry />
+          <meshStandardMaterial color="white" />
+        </mesh>
+      ))}
+
       <NeuronParticles positions={organPositions} />
 
       <group position={modelPositions.brain} rotation={[0, -0.4, 0]}>

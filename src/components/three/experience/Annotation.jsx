@@ -17,10 +17,10 @@ export default function Annotation({
   };
 
   const icons = [
-    <Star size={12} key={categoryIndex[0]} />,
-    <Pyramid size={12} key={categoryIndex[1]} />,
-    <Users size={12} key={categoryIndex[2]} />,
-    <Puzzle size={12} key={categoryIndex[3]} />,
+    <Star size={12} color="white" key={categoryIndex[0]} />,
+    <Pyramid size={12} color="white" key={categoryIndex[1]} />,
+    <Users size={12} color="white" key={categoryIndex[2]} />,
+    <Puzzle size={12} color="white" key={categoryIndex[3]} />,
   ];
 
   return (

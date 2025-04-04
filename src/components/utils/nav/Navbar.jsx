@@ -1,9 +1,8 @@
 "use client";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import AnimatedLink from "./AnimatedLink";
 import Image from "next/image";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import NavLink from "./NavLink";
 
@@ -38,7 +37,13 @@ export default function Navbar() {
     >
       <nav className="hidden md:flex items-center justify-between p-4 ">
         <div className="w-22 h-22 object-cover flex flex-col ">
-          <Image src="/img/technical.png" width={100} height={100} alt="logo" />
+          <Image
+            src="/img/technical.png"
+            width={100}
+            height={100}
+            alt="logo"
+            className="scale-110"
+          />
           <Image src="/img/healthhub.png" width={100} height={100} alt="logo" />
         </div>
         <div className="flex items-center gap-8  mr-10">

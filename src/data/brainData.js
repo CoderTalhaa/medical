@@ -27,50 +27,60 @@ const supportingStakeholders = [
             name: "Inbrain",
             description:
               "Develops personalized brain neuromodulation therapies using flexible, bioelectronic devices to treat neurological and psychiatric disorders.",
+            img: "/brain/inbrain.png",
           },
           {
             name: "Neuroelectrics",
             description:
               "A leading provider of non-invasive, high-definition electrical brain stimulation technologies for personalized neuromodulation, helping treat a wide range of neurological and psychiatric disorders.",
+            img: "/brain/neuroelectrics.png",
           },
           {
             name: "Dycare",
             description:
               "Offers portable technological solutions aimed at improving rehabilitation for musculoskeletal and neurological patients, promoting recovery and enhancing quality of life.",
+            img: "/brain/dycare.png",
           },
           {
             name: "Kanbal Tech",
             description:
               "A MedTech company focused on enhancing diagnostic accuracy through imaging AI, specializing in cardiovascular, neurological, and oncological diagnostics.",
+            img: "/brain/kanbal.png",
           },
           {
             name: "Life Neurotech",
             description:
               "Develops wearable devices for remote monitoring of Parkinson’s Disease patients, providing real-time insights into their health to improve care.",
+            img: "/brain/life.jpeg",
           },
           {
             name: "Neurogress",
             description:
               "A decentralized platform utilizing AI-driven software and user-specific algorithm training to control neural systems for rehabilitation and therapeutic purposes.",
+            img: "/brain/neurogress.jpeg",
           },
           {
             name: "PhiMed",
             description:
               "Develops quantitative sensory testing devices to detect sensory nerve fibre dysfunction early, especially for diabetic neuropathy.",
+            img: "/brain/phi.png",
           },
           {
             name: "Stalicla",
             description:
               "Develops omics-based precision medicine to target neurodevelopmental disorders, with the goal of creating personalized treatment options.",
+            img: "/brain/stalicla.png",
           },
           {
             name: "Time is Brain",
             description: "No description provided.",
+            img: "/brain/time.jpeg",
           },
           {
             name: "Virtuleap",
             description:
               "Combines neuroscience and virtual reality to improve attention levels and address cognitive challenges, collaborating with Roche to validate solutions for attention deficit and cognitive decline.",
+            img: "/brain/virtuleap.png",
           },
         ],
       },
@@ -81,21 +91,25 @@ const supportingStakeholders = [
             name: "Pfizer",
             description:
               "A global biopharmaceutical company developing medicines and vaccines in oncology, immunology, cardiovascular, neurology, infectious diseases, and vaccines.",
+            img: "/brain/pfizer.png",
           },
           {
             name: "Angelini Pharma",
             description:
               "Specializes in Central Nervous System (CNS) and mental health treatments, including therapies for pain and rare diseases.",
+            img: "/brain/angelini.png",
           },
           {
             name: "Otsuka",
             description:
               "A global pharmaceutical company offering innovative solutions in neuroscience, nephrology, onco-hematology, and endocrinology.",
+            img: "/brain/otsuka.jpeg",
           },
           {
             name: "Ferrer",
             description:
               "A global pharmaceutical company based in Barcelona, focusing on CNS, cardio-metabolism, pain, dermatology, gynecology, gastro-intestinal, and oncology.",
+            img: "/brain/ferrer.jpeg",
           },
         ],
       },
@@ -106,16 +120,19 @@ const supportingStakeholders = [
             name: "Bayés Salut",
             description:
               "A renowned medical center in Catalonia specializing in the diagnosis and treatment of neurodevelopmental and mental health disorders.",
+            img: "/brain/bayes.jpeg",
           },
           {
             name: "Hospital San Joan de Déu",
             description:
               "A leading healthcare institution specializing in pediatric care, particularly in neurology and neurosurgery.",
+            img: "/brain/hospital.png",
           },
           {
             name: "Vall d'Hebron",
             description:
               "One of Catalonia’s largest and most comprehensive hospitals, offering specialized care in neurology, neurosurgery, and neurorehabilitation.",
+            img: "/brain/vall.png",
           },
         ],
       },
@@ -126,16 +143,19 @@ const supportingStakeholders = [
             name: "Barcelona Supercomputing Center",
             description:
               "Spain’s leading national supercomputing facility, providing high-performance computing resources for cutting-edge research in life sciences, engineering, and other fields.",
+            img: "/brain/barcelon.jpeg",
           },
           {
             name: "Barcelona Biomedical Research Park (PRBB)",
             description:
               "Home to several research centers, including the Hospital del Mar Medical Research Institute and the Centre for Genomic Regulation, PRBB fosters collaborative research in health and life sciences.",
+            img: "/brain/prbb.png",
           },
           {
             name: "Barcelonaβeta Brain Research Center",
             description:
               "Focuses on research related to Alzheimer's disease and other neurodegenerative disorders.",
+            img: "/brain/beta.png",
           },
         ],
       },
@@ -146,6 +166,7 @@ const supportingStakeholders = [
             name: "ACCIÓ",
             description:
               "The Catalan Government’s leading agency for innovation, providing resources, funding, and global networks to help startups accelerate growth, drive innovation, and enhance competitiveness.",
+            img: "/brain/accoio.png",
           },
         ],
       },
@@ -156,11 +177,13 @@ const supportingStakeholders = [
             name: "Multiple Sclerosis Foundation",
             description:
               "A non-profit organization dedicated to improving the quality of life for people with multiple sclerosis and other neurodegenerative diseases.",
+            img: "/brain/multiple.png",
           },
           {
             name: "Pasqual Maragall Foundation",
             description:
               "Focuses on Alzheimer’s disease research, advancing scientific understanding and developing preventive strategies.",
+            img: "/brain/pasqual.png",
           },
         ],
       },
@@ -171,16 +194,19 @@ const supportingStakeholders = [
             name: "Alta Life Sciences",
             description:
               "A venture capital firm investing in innovative health and life sciences companies, particularly those focused on transformative healthcare technologies.",
+            img: "/brain/alta.png",
           },
           {
             name: "Asabys",
             description:
               "A venture capital firm supporting cutting-edge health innovations grounded in scientific evidence, investing in companies that aim to impact global healthcare.",
+            img: "/brain/asabys.png",
           },
           {
             name: "Sabadell Bank",
             description:
               "BStartup, Sabadell Bank’s initiative, supports innovative health tech companies in the pre-seed and seed stages, fostering the growth of health-related solutions.",
+            img: "/brain/sabadell.png",
           },
         ],
       },
@@ -191,11 +217,13 @@ const supportingStakeholders = [
             name: "DKV",
             description:
               "A leading healthcare insurance provider offering a variety of health plans for individuals and families.",
+            img: "/brain/dkv.png",
           },
           {
             name: "Zurich",
             description:
               "A global insurer providing comprehensive general and life insurance solutions for individuals, small businesses, and large corporations.",
+            img: "/brain/zurich.png",
           },
         ],
       },

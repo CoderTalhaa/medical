@@ -95,6 +95,13 @@ export default function Overlay() {
                                   <strong className="text-teal-300 font-manrope text-xl">
                                     {item.name}:
                                   </strong>
+                                  {item.img && (
+                                    <img
+                                      src={item.img}
+                                      alt={item.name}
+                                      className="w-20"
+                                    />
+                                  )}
                                   <p className="font-text text-sm md:text-base">
                                     {item.description}
                                   </p>
