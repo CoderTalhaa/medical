@@ -183,10 +183,22 @@ const panelDiscussion = [
     description:
       "This panel will explore the real-world impact of artificial intelligence on cardiovascular care, moving beyond the initial hype. Experts will discuss how AI is transforming disease detection, diagnosis, and treatment in cardiology, with a focus on predictive analytics, medical imaging, and personalized medicine. The discussion will also touch on the integration of AI in clinical practice and its potential to revolutionize cardiovascular healthcare.",
     panelists: [
-      "Andreas Wüpper, Managing Director, Fresenius Medical Care Ventures GmbH",
-      "Antoni Plasència, Managing Director, Recerca i Innovació en Salut",
-      "Jackson Jerrold, Director, Mayo Clinic",
-      "Alex Ceschel, Vice President, 47Labs",
+      {
+        name: "Andreas Wüpper",
+        position: "Managing Director, Fresenius Medical Care Ventures GmbH",
+      },
+      {
+        name: "Antoni Plasència",
+        position: "Managing Director, Recerca i Innovació en Salut",
+      },
+      {
+        name: "Jackson Jerrold",
+        position: "Director, Mayo Clinic",
+      },
+      {
+        name: "Alex Ceschel",
+        position: "Vice President, 47Labs",
+      },
     ],
   },
 ];

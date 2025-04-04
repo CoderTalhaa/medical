@@ -158,10 +158,22 @@ const panelDiscussion = [
     description:
       "This panel will explore the gender disparities in healthcare, focusing on the unique health challenges women face. Experts will discuss the need for tailored solutions in disease prevention, diagnosis, and treatment, emphasizing the role of research, innovation, and policy reform to bridge the health gap and improve outcomes for women.",
     panelists: [
-      "Eva Vila-Massanas, Co-Founder, Juno House",
-      "Agnes Arbat, CEO & Co-Founder, Oxolife",
-      "Joan Ruis Tarruella, Medical Advisor, Women's Health",
-      "Michelle Commane, Head of Business Expansion Strategy, Alexion (AstraZeneca)",
+      {
+        name: "Eva Vila-Massanas",
+        position: "Co-Founder, Juno House",
+      },
+      {
+        name: "Agnes Arbat",
+        position: "CEO & Co-Founder, Oxolife",
+      },
+      {
+        name: "Joan Ruis Tarruella",
+        position: "Medical Advisor, Women's Health",
+      },
+      {
+        name: "Michelle Commane",
+        position: "Head of Business Expansion Strategy, Alexion (AstraZeneca)",
+      },
     ],
   },
 ];

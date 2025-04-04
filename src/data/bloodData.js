@@ -168,10 +168,22 @@ const panelDiscussion = [
     description:
       "This panel will explore how connectivity and seamless data integration can improve patient care in the field of blood-related diseases. Experts will discuss the biological connectivity within the circulatory system, advancements in plasma science, and how data-sharing across platforms can enhance the management of conditions like blood cancers, immunological disorders, and hemophilia. The discussion will focus on improving access to treatments and fostering collaboration among healthcare professionals to create a more inclusive and effective healthcare ecosystem.",
     panelists: [
-      "Mariona Sanz, Head of Innovation, Barcelona Supercomputing Center",
-      "Josep Sanfeliu, Managing Partner, Asabys",
-      "Bibiana Berenguer, Head of Innovation, Novartis",
-      "Mar Massó, Innovation Senior Manager, Grifols",
+      {
+        name: "Mariona Sanz",
+        position: "Head of Innovation, Barcelona Supercomputing Center",
+      },
+      {
+        name: "Josep Sanfeliu",
+        position: "Managing Partner, Asabys",
+      },
+      {
+        name: "Bibiana Berenguer",
+        position: "Head of Innovation, Novartis",
+      },
+      {
+        name: "Mar Massó",
+        position: "Innovation Senior Manager, Grifols",
+      },
     ],
   },
 ];

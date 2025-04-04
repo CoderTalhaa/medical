@@ -45,7 +45,7 @@ const supportingStakeholders = [
             name: "Kanbal Tech",
             description:
               "A MedTech company focused on enhancing diagnostic accuracy through imaging AI, specializing in cardiovascular, neurological, and oncological diagnostics.",
-            img: "/brain/kanbal.png",
+            img: "/brain/kanbal.jpeg",
           },
           {
             name: "Life Neurotech",
@@ -73,7 +73,8 @@ const supportingStakeholders = [
           },
           {
             name: "Time is Brain",
-            description: "No description provided.",
+            description:
+              "Time is brain is a medical principle emphasising that during a stroke, every minute of delayed treatment leads to irreversible brain cell death.",
             img: "/brain/time.jpeg",
           },
           {
@@ -240,10 +241,22 @@ const panelDiscussion = [
     description:
       "This panel will explore how emerging technologies, such as Brain-Computer Interfaces (BCIs), wearable devices, and Artificial Intelligence (AI), are transforming personalized care in neuroscience. The discussion will highlight advancements in diagnosis, treatment, and patient outcomes, demonstrating the potential for these technologies to revolutionize the field.",
     panelists: [
-      "Carolina Aguilar, CEO & Co-Founder, InBrain Neuroelectronics",
-      "Nora Sales, Manager, Science for Change",
-      "César Morcillo, Medical Director, Sanitas",
-      "Alfonso Alcalá-Galiano, Head of Strategy & Transformation, Siemens Healthineers",
+      {
+        name: "Carolina Aguilar",
+        position: "CEO & Co-Founder, InBrain Neuroelectronics",
+      },
+      {
+        name: "Nora Sales",
+        position: "Manager, Science for Change",
+      },
+      {
+        name: "César Morcillo",
+        position: "Medical Director, Sanitas",
+      },
+      {
+        name: "Alfonso Alcalá-Galiano",
+        position: "Head of Strategy & Transformation, Siemens Healthineers",
+      },
     ],
   },
 ];

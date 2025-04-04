@@ -14,7 +14,6 @@ import { Player } from "./experience/Player";
 import useModelStore from "@/store/useStore";
 import SkyBillboard from "./experience/SkyBillboard";
 import Background from "./experience/Background";
-import { Perf } from "r3f-perf";
 
 export const Controls = {
   forward: "forward",
@@ -22,6 +21,7 @@ export const Controls = {
   left: "left",
   right: "right",
 };
+
 export default function Scene({ showWelcome }) {
   const { content } = useModelStore();
   const pointerLockControlsRef = useRef();
@@ -63,7 +63,6 @@ export default function Scene({ showWelcome }) {
           camera={{ position: [0, 2, 0], fov: 60 }}
           className="canvas"
         >
-          <Perf position="top-left" />
           <color attach="background" args={["#15151a"]} />
           <Background />
           <SkyBillboard />

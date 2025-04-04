@@ -178,10 +178,22 @@ const panelDiscussion = [
     description:
       "This panel will discuss how the COVID-19 pandemic catalyzed rapid innovation in respiratory healthcare, including advancements in diagnostics, treatments, and patient management. Topics will cover the accelerated development of vaccines, digital health technologies, and telemedicine, and how these innovations are now being applied in the management of respiratory diseases and other chronic conditions.",
     panelists: [
-      "César Velasco, Science & Innovation Director, AstraZeneca Barcelona",
-      "Beatriz Arriaga, CFO, Teladoc",
-      "Frank Manning, Director, RQMIS",
-      "Leire Jiménez Ayesa, Chief Innovation Officer, MAPFRE",
+      {
+        name: "César Velasco",
+        position: "Science & Innovation Director, AstraZeneca Barcelona",
+      },
+      {
+        name: "Beatriz Arriaga",
+        position: "CFO, Teladoc",
+      },
+      {
+        name: "Frank Manning",
+        position: "Director, RQMIS",
+      },
+      {
+        name: "Leire Jiménez Ayesa",
+        position: "Chief Innovation Officer, MAPFRE",
+      },
     ],
   },
 ];

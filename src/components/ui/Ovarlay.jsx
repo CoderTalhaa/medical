@@ -56,19 +56,30 @@ export default function Overlay() {
                         <ol className="list-inside space-y-3">
                           {content[0].items.map((item, i) => (
                             <li key={i} className="flex flex-col gap-2">
-                              {item.img && (
-                                <div className="w-44 scale-110 pb-5">
-                                  <Image
-                                    alt="logo"
-                                    src={item.img}
-                                    width={1000}
-                                    height={1000}
-                                  />
-                                </div>
-                              )}
+                              <div className="flex justify-center items-center w-full">
+                                {item.img && (
+                                  <div className="w-60 pb-5">
+                                    <Image
+                                      alt="logo"
+                                      src={item.img}
+                                      width={1000}
+                                      height={1000}
+                                    />
+                                  </div>
+                                )}
+                              </div>
                               <strong className="text-teal-300 font-headings font-semibold text-2xl">
                                 {item.name}:
                               </strong>
+                              {item.challengeOwner && (
+                                <p className="font-text text-purple-300">
+                                  Challenge Owner:
+                                  <span className="text-stone-100 font-semibold font-manrope">
+                                    {" "}
+                                    {item.challengeOwner}
+                                  </span>
+                                </p>
+                              )}
                               <p className="font-text">{item.description}</p>
                             </li>
                           ))}
@@ -80,7 +91,7 @@ export default function Overlay() {
                         )}
                       </>
                     ) : content[0].subcategories ? (
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                         {content[0].subcategories.map((subcat, j) => (
                           <div
                             key={j}
@@ -96,9 +107,11 @@ export default function Overlay() {
                                     {item.name}:
                                   </strong>
                                   {item.img && (
-                                    <img
+                                    <Image
                                       src={item.img}
                                       alt={item.name}
+                                      width={100}
+                                      height={100}
                                       className="w-20"
                                     />
                                   )}
@@ -120,25 +133,31 @@ export default function Overlay() {
                         )}
                         <p className="font-text">{content[0].description}</p>
                         {content[0].panelists && (
-                          <div className="mt-5">
-                            <h4 className="text-xl font-semibold text-purple-300 mb-2">
+                          <div className="mt-8">
+                            <h4 className="text-xl font-semibold text-purple-300 mb-16">
                               Panelists:
                             </h4>
-                            <ul className="flex gap-2">
+                            <ul className="flex justify-evenly">
                               {content[0].panelists.map((panelist, i) => (
                                 <div
                                   key={i}
-                                  className="flex flex-col flex-1 items-center "
+                                  className="flex flex-col items-center text-center"
                                 >
-                                  <div className="w-36 h-36 scale-125">
+                                  <div className="w-36 h-36 mb-2">
                                     <Image
                                       src={"/img/user.png"}
                                       width={100}
                                       height={100}
-                                      alt="logo"
+                                      alt="panelist image"
+                                      className="rounded-full"
                                     />
                                   </div>
-                                  <p className="font-text">{panelist}</p>
+                                  <p className="font-semibold font-text">
+                                    {panelist.name}
+                                  </p>
+                                  <p className="font-manrope text-sm max-w-60">
+                                    {panelist.position}
+                                  </p>
                                 </div>
                               ))}
                             </ul>
