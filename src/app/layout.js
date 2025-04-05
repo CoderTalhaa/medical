@@ -27,9 +27,9 @@ const bungee = Bungee({
 });
 
 export const metadata = {
-  title: "Medical",
+  title: "HRC-Stochastic Studio",
   description:
-    "It&rsquo;s not a faith in technology. It&rsquo;s faith in people",
+    "HRC Stochastic Studio is a research-driven lab focused on leveraging data, stochastic modeling, and design to advance innovation in medical science and healthcare solutions.",
 };
 
 export default function RootLayout({ children }) {
