@@ -55,7 +55,7 @@ export function Player() {
       colliders={false}
       mass={1}
       type="dynamic"
-      position={[0.6, 13, 34.5]}
+      position={[0.6, 13, 35]}
       enabledRotations={[false, false, false]}
     >
       <CapsuleCollider args={[0.5, 0.5]} />
