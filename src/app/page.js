@@ -12,8 +12,8 @@ export default function Home() {
     <>
       {showWelcome && (
         <div className="fixed inset-0 h-full w-full bg-[#0000008a] backdrop-blur-lg z-[999] flex justify-center items-center ">
-          <div className="border h-[50%] border-gray-400 rounded-xl p-8 shadow-2xl backdrop-blur-sm flex flex-col items-center justify-center text-center ">
-            <h1 className="~text-2xl/3xl font-manrope font-bold text-white mb-4">
+          <div className="border max-h-[70%] border-gray-400 rounded-xl p-8 shadow-2xl backdrop-blur-sm flex flex-col items-center justify-center text-center ">
+            <h1 className="text-xl md:text-3xl font-manrope font-bold text-white mb-4">
               Welcome to the Health Revolution Congress (The VR experience)!
             </h1>
             <p className="text-white font-text max-w-xl pb-10">
